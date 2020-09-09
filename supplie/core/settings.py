@@ -31,6 +31,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    #project apps
+    'core.product'
+
+    #django pre-built apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
