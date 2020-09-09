@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # project apps
     'backend.user',
-    
+
     # django apps
     'django.contrib.admin',
     'django.contrib.auth',
@@ -58,7 +58,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'frontend/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,8 +79,12 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'supplie_db',
+        'USER': 'shiro',
+        'PASSWORD': 'TaLkinGBarK3',
+        'HOST': 'localhost',
+        'PORT': '8080',   
     }
 }
 
@@ -120,5 +124,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'frontend/static',
+]
+
 
 STATIC_URL = '/static/'
