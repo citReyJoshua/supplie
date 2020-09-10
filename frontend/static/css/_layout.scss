@@ -1,0 +1,28 @@
+.nav {
+  background-color: skyblue;
+  box-shadow: $shadow-subtle;
+}
+
+.footer {
+  position: sticky;
+  bottom: 1;
+  left: 1;
+}
+
+.font-bigger {
+  font-size: 1.1em;
+}
+
+table {
+  box-shadow: $shadow-subtle;
+}
+
+.input-text {
+  padding: 0.5em;
+  border-radius: 0.4rem;
+  transition: box-shadow 200ms;
+  &:focus {
+    outline: none;
+    box-shadow: 0.2rem 0.8rem 1.6rem var(--colorPrimary600);
+  }
+}

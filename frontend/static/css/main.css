@@ -22,7 +22,59 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #f0efdb;
+}
+
+ul {
+  margin-bottom: 0 !important;
+}
+
 * {
   font-family: "Baloo Chettan 2", cursive;
+  font-size: 1em;
+}
+
+.nav {
+  background-color: skyblue;
+  -webkit-box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.43);
+          box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.43);
+}
+
+.footer {
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 1;
+  left: 1;
+}
+
+.font-bigger {
+  font-size: 1.1em;
+}
+
+table {
+  -webkit-box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.43);
+          box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.43);
+}
+
+.input-text {
+  padding: 0.5em;
+  border-radius: 0.4rem;
+  -webkit-transition: -webkit-box-shadow 200ms;
+  transition: -webkit-box-shadow 200ms;
+  transition: box-shadow 200ms;
+  transition: box-shadow 200ms, -webkit-box-shadow 200ms;
+}
+
+.input-text:focus {
+  outline: none;
+  -webkit-box-shadow: 0.2rem 0.8rem 1.6rem var(--colorPrimary600);
+          box-shadow: 0.2rem 0.8rem 1.6rem var(--colorPrimary600);
 }
 /*# sourceMappingURL=main.css.map */

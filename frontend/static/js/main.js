@@ -6,7 +6,7 @@ $(function () {
     maxDateFilter = "";
 
     $('input[name="daterange"]').daterangepicker({
-        opens: "left",
+        opens: "right",
     });
     $('input[name="daterange"]').on("apply.daterangepicker", function (ev, picker) {
         minDateFilter = Date.parse(picker.startDate);

@@ -20,7 +20,8 @@
     <link rel="stylesheet" type="text/css " href="{% static 'css/main.css' %}" />
   </head>
   <body>
-    {% block content %} {% endblock %}
+    {% include 'sections/navbar.html'%} {% block content %} {% endblock %}
+
     <script src="{% static 'vendors/jquery-3.5.1.js' %}"></script>
     <script src="{% static 'vendors/bootstrap.min.js'%}"></script>
     <script src="{% static 'vendors/jquery.dataTables.min.js' %}"></script>
@@ -33,6 +34,7 @@
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
     ></script>
+    {% include 'sections/footer.html' %}
     <script src="{% static 'js/main.js' %}"></script>
   </body>
 </html>
