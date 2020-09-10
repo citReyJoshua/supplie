@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.cover {
+  margin: 0;
+  padding: 0;
+  background-image: url("coverphoto.jpg");
+  /* The image used */
+  background-color: #cccccc;
+  /* Used if the image is unavailable */
+  height: 100vh;
+  /* You must set a specified height */
+  background-position: 50% 35%;
+  /* Center the image */
+  background-repeat: no-repeat;
+  /* Do not repeat the image */
+  background-size: cover;
+  /* Resize the background image to cover the entire container */
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container {
+  text-align: center;
+  width: 70%;
+  height: 40%;
+  font-family: 'Jura', sans-serif;
+}
+
+.heading {
+  color: white;
+  font-size: 4em;
+  margin: 20px 0;
+}
+
+.subheading {
+  color: white;
+  font-size: 1.5em;
+  margin: 40px 0;
+  font-weight: bold;
+}
+
+.subheadingspan {
+  background-color: black;
+  padding: 0 10px;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.signin {
+  color: white;
+  background-color: #297eb6;
+}
+
+.signup {
+  color: black;
+}
+
+.firstword {
+  background-color: #991a68;
+  padding: 0 15px;
+  border-radius: 5px;
+}
+
+b {
+  background-color: #f851b8;
+  padding: 0 15px;
+  border-radius: 5px;
+}
+
+a {
+  text-decoration: none;
+  margin: 15px;
+  background-color: black;
+  color: #297eb6;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal {
+  font-family: 'Jura', sans-serif;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: none;
+}
+
+.modal .modal-content {
+  background-color: white;
+  width: 70vw;
+  height: 80vh;
+  margin: 50px auto;
+}
+
+.modal .modal-content h1 {
+  text-align: center;
+  font-size: 2.5em;
+  padding: 30px 30px 0 30px;
+}
+
+.modal .modal-content p {
+  text-align: center;
+  padding: 50px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  line-height: 1.5;
+}
+
+.modal .modal-content button {
+  background-color: #991a68;
+  color: white;
+  float: right;
+  padding: 15px 40px;
+  margin-right: 50px;
+  margin-top: 30px;
+}
+/*# sourceMappingURL=styles.css.map */
