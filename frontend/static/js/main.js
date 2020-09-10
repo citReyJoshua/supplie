@@ -1,5 +1,10 @@
 $(function () {
-    var table = $("#example").DataTable();
+    var table = $("#example").DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'excelHtml5',
+        ]
+    });
 
     // Date range vars
     minDateFilter = "";

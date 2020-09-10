@@ -1,18 +1,23 @@
 {% extends 'sections/base.html' %} {% block content %}
 <div class="container">
-  <div class="container d-flex justify-content-center my-3">
+  <div class="container d-flex justify-content-center my-2">
     <h1>Customer</h1>
   </div>
-  <span>Date Range: </span>
-  <input class="input-text my-4" type="text" name="daterange" value="01/01/2020 - 12/31/2020" />
-
+  <div class="d-flex align-items-center justify-content-end">
+    <div class="d-flex align-items-center">
+      <h6 class="mx-2">Date Range:</h6>
+      <input class="input-text my-4" type="text" name="daterange" value="01/01/2020 - 12/31/2020" />
+    </div>
+  </div>
   <table id="example" class="table table-striped table-bordered" style="width: 100%">
     <thead>
       <tr>
         <th>Date Registered</th>
         <th>First Name</th>
         <th>Last Name</th>
+        <th>Birth Date</th>
         <th>City Address</th>
+        <th>Options</th>
       </tr>
     </thead>
     <tbody>
@@ -20,91 +25,166 @@
         <td>12/05/2020</td>
         <td>Donna</td>
         <td>Sniper</td>
+        <td>04/15/1999</td>
         <td>Surigao City</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1">View</button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
       </tr>
       <tr>
         <td>12/05/2011</td>
         <td>Dave</td>
         <td>Gamboa</td>
+        <td>04/15/1999</td>
         <td>Cebu City</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1">View</button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
       </tr>
       <tr>
         <td>10/15/2020</td>
         <td>Orlan Jr.</td>
         <td>Quijada</td>
+        <td>04/15/1999</td>
         <td>Mandaue City</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1">View</button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
       </tr>
       <tr>
         <td>01/16/2020</td>
         <td>Jubeth</td>
         <td>Ollave</td>
+        <td>04/15/1999</td>
         <td>Liloan City</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1">View</button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
       </tr>
       <tr>
         <td>11/01/2020</td>
         <td>Jan Dale</td>
         <td>Amores</td>
+        <td>04/15/1999</td>
         <td>Jolo City</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1">View</button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
       </tr>
       <tr>
         <td>11/01/2020</td>
         <td>Donnalyn</td>
         <td>Bartolome</td>
+        <td>04/15/1999</td>
         <td>Makati City</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1">View</button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
       </tr>
       <tr>
         <td>06/06/2020</td>
         <td>Queen Jenny Rose</td>
         <td>Villanueva</td>
+        <td>04/15/1999</td>
         <td>Ormoc City</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1">View</button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
       </tr>
       <tr>
         <td>12/01/2020</td>
         <td>Kim</td>
         <td>Tan</td>
+        <td>04/15/1999</td>
         <td>Cebu City</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1">View</button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
       </tr>
       <tr>
         <td>12/05/2020</td>
         <td>Lucio</td>
         <td>Chi</td>
+        <td>04/15/1999</td>
         <td>Zamboanga City</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1">View</button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
       </tr>
       <tr>
         <td>09/10/2020</td>
         <td>Gwyneth</td>
         <td>Ballesteros</td>
+        <td>04/15/1999</td>
         <td>Hindang</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1">View</button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
       </tr>
       <tr>
         <td>09/09/2020</td>
         <td>Rad Brandon</td>
         <td>Porras</td>
+        <td>04/15/1999</td>
         <td>Surigao City</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1">View</button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
       </tr>
       <tr>
         <td>09/08/2020</td>
         <td>Mary Rose</td>
         <td>Casamayor</td>
+        <td>04/15/1999</td>
         <td>Tacloban City</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1">View</button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
       </tr>
       <tr>
         <td>09/10/2020</td>
         <td>Divizia Vera</td>
         <td>Perez</td>
+        <td>04/15/1999</td>
         <td>Baybay City</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1">View</button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
       </tr>
       <tr>
         <td>09/10/2020</td>
         <td>John Kase</td>
         <td>Rubio</td>
+        <td>04/15/1999</td>
         <td>Pasig City</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1">View</button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
       </tr>
       <tr>
         <td>09/11/2020</td>
         <td>Rey Joshua</td>
         <td>Macarat</td>
+        <td>04/15/1999</td>
         <td>Quezon City</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1">View</button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
       </tr>
     </tbody>
     <tfoot>
@@ -112,7 +192,9 @@
         <th>Date Registered</th>
         <th>First Name</th>
         <th>Last Name</th>
+        <th>Birth Date</th>
         <th>City Address</th>
+        <th>Options</th>
       </tr>
     </tfoot>
   </table>
