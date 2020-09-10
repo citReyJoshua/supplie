@@ -3,4 +3,6 @@ from . import views
 
 app_name='user'
 
-urlpatterns = []
+urlpatterns = [
+    path('index', views.CustomerView.as_view(), name='index'),
+]

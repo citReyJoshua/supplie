@@ -3,4 +3,5 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('customer/', include('backend.user.urls', namespace='user'))
 ]
