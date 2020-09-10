@@ -1,0 +1,53 @@
+$shadow-subtle: 3px 3px 5px -1px rgba(0, 0, 0, 0.43);
+
+* {
+  font-family: "Baloo Chettan 2", cursive;
+}
+
+$breakpoints: (
+  "small": 767px,
+  "medium": 992px,
+  "large": 1200px,
+);
+
+@mixin rounded {
+  border-radius: 0.6em;
+}
+@mixin elem($name) {
+  @at-root #{&}__#{$name} {
+    @content;
+  }
+}
+
+@mixin mod($name) {
+  @at-root #{&}--#{$name} {
+    @content;
+  }
+}
+
+@mixin respond-to($breakpoint) {
+  $value: map-get($breakpoints, $breakpoint);
+
+  @if $value != null {
+    @media screen and (min-width: $value) {
+      @content;
+    }
+  }
+}
+
+@mixin push--auto {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
+
+@mixin pseudo($display: block, $pos: absolute, $content: "") {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+@function font-mul($num) {
+  @return $num * 100;
+}

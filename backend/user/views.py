@@ -3,4 +3,4 @@ from django.views import View
 
 class CustomerView(View):
     def get(self, request):
-        return render(request, 'customer/index.html', {'range': range(50),})
+        return render(request, 'customer/index.html')
