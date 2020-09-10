@@ -1,6 +1,7 @@
 .nav {
-  background-color: #138496;
+  background-color: #4285f4;
   box-shadow: $shadow-subtle;
+  color: white;
 }
 
 .footer {
@@ -25,4 +26,8 @@ table {
     outline: none;
     box-shadow: 0.2rem 0.8rem 1.6rem var(--colorPrimary600);
   }
+}
+
+.font-white a {
+  color: white;
 }
