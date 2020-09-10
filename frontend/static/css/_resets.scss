@@ -17,10 +17,10 @@ table {
 }
 
 a {
-  color: black;
+  color: inherit;
   text-decoration: none;
   &:hover {
-    color: black;
+    color: inherit;
     text-decoration: none;
   }
 }
