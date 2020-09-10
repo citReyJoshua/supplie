@@ -9,3 +9,7 @@ class CustomerView(View):
 class CustomerRegistrationView(View):
     def get(self, request):
         return render(request,'registration/customer/index.html')
+
+class LandingPage(View):
+    def get(self, request):
+        return render(request,'landingpage/index.html')

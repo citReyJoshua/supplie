@@ -1,0 +1,92 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Jura&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/landingpage/styles.css' %}">
+
+    <title>Landing Page</title>
+</head>
+<body>
+    <div class="cover">
+        <div class="container">
+            <div class="heading"><span class='firstword'>INFORMATION</span> <b>MANAGEMENT</b></div>
+
+            <div class="subheading">
+                <span class="subheadingspan">WE STUDY DATABASE AND WE CREATE ONE</span>
+            </div>
+
+            <div style="margin-bottom: 40px;">
+                <button class="signin">SIGN IN</button>
+                <button class="signup">SIGN UP</button>
+            </div>
+
+            <a id='aboutus'>About us</a>
+            <a id='contactus'>Contact us</a>
+            
+        </div>
+    </div>
+
+    <div class="modal" id="modal-about-us">
+        <div id="modal-content" class="modal-content">
+            <h1>
+                About Us
+            </h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae ex reiciendis delectus vero debitis optio sequi nostrum tempora sed. Id voluptates, voluptatem fuga vel neque perferendis nihil fugiat consectetur expedita porro molestiae tenetur incidunt iure quaerat non quos dolorem sapiente. At molestiae ratione commodi voluptatem, ullam ipsam repellendus perferendis, distinctio, dignissimos officiis temporibus ipsum ut quia asperiores excepturi cumque magni tempora nobis aut dolores minus vero accusamus. Necessitatibus omnis veniam excepturi dignissimos, ut sint iusto consequatur exercitationem sapiente ipsum, laudantium et. Numquam a illo eos, excepturi repudiandae esse iste obcaecati saepe unde expedita hic eligendi sequi deserunt voluptas aliquid ratione.
+            </p>
+            <button type="button" id='close-about-us'>
+                OK
+            </button>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-contact-us">
+        <div id="modal-content" class="modal-content">
+            <h1>
+                Contact Us
+            </h1>
+            <p>
+                Contact Number: +123-231-1234<br>
+                Email Address: contactus@gmail.com<br>
+                Facebook: facebook.com/contactus<br>
+                Instagram: instagram.com/contactus<br>
+                Twitter: twitter.com/contactus<br>
+            </p>
+            <button type="button" id='close-contact-us'>
+                OK
+            </button>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>
+    
+    <script>
+        $(()=>{
+            $('#aboutus').click((e)=>{
+                console.log(e)
+                $('#modal-about-us').show()
+            })
+
+            $('#close-about-us').click((e)=>{
+                $('#modal-about-us').hide()
+            })
+
+            $('#contactus').click((e)=>{
+                $('#modal-contact-us').show()
+            })
+
+            $('#close-contact-us').click((e)=>{
+                $('#modal-contact-us').hide()
+            })
+        })
+    </script>
+
+</body>
+</html>
