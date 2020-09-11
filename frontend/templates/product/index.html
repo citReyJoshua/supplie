@@ -1,202 +1,284 @@
-{% extends 'sections/base.html' %} {% block content %}
+{% extends 'sections/base.html' %}
+{% block title %}
+Product Dashboard
+{% endblock %}
+{% block content %}
+
 <div class="container">
-  <div class="container d-flex justify-content-center my-2">
-    <h1>Customer</h1>
-  </div>
-  <div class="d-flex align-items-center justify-content-end">
-    <div class="d-flex align-items-center">
-      <h6 class="mx-2">Date Range:</h6>
-      <input class="input-text my-4" type="text" name="daterange" value="01/01/2020 - 12/31/2020" />
-    </div>
+  
+  <div class="d-flex align-items-center justify-content-between">
+      <button class="button btn-amber rounded px-2" type='button'>
+      <a href='{% url 'product:registration' %}'>Add Customer</a>
+      </button>
+      <h1>Customer</h1>
+      <div class='d-flex justify-content-end align-items-center'>
+        <h6 class="mx-2">Date Range:</h6>
+        <input class="input-text my-4" type="text" name="daterange" value="01/01/2020 - 12/31/2020" />
+      </div>
   </div>
   <table id="example" class="table table-striped table-bordered" style="width: 100%">
     <thead>
       <tr>
         <th>Date Registered</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Birth Date</th>
-        <th>City Address</th>
-        <th>Options</th>
+        <th>Category</th>
+        <th>Brand</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>No. of Items</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>12/05/2020</td>
-        <td>Donna</td>
-        <td>Sniper</td>
-        <td>04/15/1999</td>
-        <td>Surigao City</td>
+        <td>School Supplies</td>
+        <td>Monggol</td>
+        <td>Pencil</td>
+        <td>8.50</td>
+        <td>100 pcs</td>
         <th>
-          <button class="button btn-outline-primary rounded px-1">View</button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
-      <tr>
-        <td>12/05/2011</td>
-        <td>Dave</td>
-        <td>Gamboa</td>
-        <td>04/15/1999</td>
-        <td>Cebu City</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1">View</button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
-      <tr>
-        <td>10/15/2020</td>
-        <td>Orlan Jr.</td>
-        <td>Quijada</td>
-        <td>04/15/1999</td>
-        <td>Mandaue City</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1">View</button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
-      <tr>
-        <td>01/16/2020</td>
-        <td>Jubeth</td>
-        <td>Ollave</td>
-        <td>04/15/1999</td>
-        <td>Liloan City</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1">View</button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
-      <tr>
-        <td>11/01/2020</td>
-        <td>Jan Dale</td>
-        <td>Amores</td>
-        <td>04/15/1999</td>
-        <td>Jolo City</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1">View</button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
-      <tr>
-        <td>11/01/2020</td>
-        <td>Donnalyn</td>
-        <td>Bartolome</td>
-        <td>04/15/1999</td>
-        <td>Makati City</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1">View</button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
-      <tr>
-        <td>06/06/2020</td>
-        <td>Queen Jenny Rose</td>
-        <td>Villanueva</td>
-        <td>04/15/1999</td>
-        <td>Ormoc City</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1">View</button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
-      <tr>
-        <td>12/01/2020</td>
-        <td>Kim</td>
-        <td>Tan</td>
-        <td>04/15/1999</td>
-        <td>Cebu City</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1">View</button>
+          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
           <button class="button btn-outline-danger rounded px-1">Delete</button>
         </th>
       </tr>
       <tr>
         <td>12/05/2020</td>
-        <td>Lucio</td>
-        <td>Chi</td>
-        <td>04/15/1999</td>
-        <td>Zamboanga City</td>
+        <td>School Supplies</td>
+        <td>Monggol</td>
+        <td>Pencil</td>
+        <td>8.50</td>
+        <td>100 pcs</td>
         <th>
-          <button class="button btn-outline-primary rounded px-1">View</button>
+          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
+      </tr><tr>
+        <td>12/05/2020</td>
+        <td>School Supplies</td>
+        <td>Monggol</td>
+        <td>Pencil</td>
+        <td>8.50</td>
+        <td>100 pcs</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
+      </tr><tr>
+        <td>12/05/2020</td>
+        <td>School Supplies</td>
+        <td>Monggol</td>
+        <td>Pencil</td>
+        <td>8.50</td>
+        <td>100 pcs</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
+      </tr><tr>
+        <td>12/05/2020</td>
+        <td>School Supplies</td>
+        <td>Monggol</td>
+        <td>Pencil</td>
+        <td>8.50</td>
+        <td>100 pcs</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
+      </tr><tr>
+        <td>12/05/2020</td>
+        <td>School Supplies</td>
+        <td>Monggol</td>
+        <td>Pencil</td>
+        <td>8.50</td>
+        <td>100 pcs</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
+      </tr><tr>
+        <td>12/05/2020</td>
+        <td>School Supplies</td>
+        <td>Monggol</td>
+        <td>Pencil</td>
+        <td>8.50</td>
+        <td>100 pcs</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
+      </tr><tr>
+        <td>12/05/2020</td>
+        <td>School Supplies</td>
+        <td>Monggol</td>
+        <td>Pencil</td>
+        <td>8.50</td>
+        <td>100 pcs</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
+      </tr><tr>
+        <td>12/05/2020</td>
+        <td>School Supplies</td>
+        <td>Monggol</td>
+        <td>Pencil</td>
+        <td>8.50</td>
+        <td>100 pcs</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
+      </tr><tr>
+        <td>12/05/2020</td>
+        <td>School Supplies</td>
+        <td>Monggol</td>
+        <td>Pencil</td>
+        <td>8.50</td>
+        <td>100 pcs</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
+      </tr><tr>
+        <td>12/05/2020</td>
+        <td>School Supplies</td>
+        <td>Monggol</td>
+        <td>Pencil</td>
+        <td>8.50</td>
+        <td>100 pcs</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
+      </tr><tr>
+        <td>12/05/2020</td>
+        <td>School Supplies</td>
+        <td>Monggol</td>
+        <td>Pencil</td>
+        <td>8.50</td>
+        <td>100 pcs</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
+      </tr><tr>
+        <td>12/05/2020</td>
+        <td>School Supplies</td>
+        <td>Monggol</td>
+        <td>Pencil</td>
+        <td>8.50</td>
+        <td>100 pcs</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
+      </tr><tr>
+        <td>12/05/2020</td>
+        <td>School Supplies</td>
+        <td>Monggol</td>
+        <td>Pencil</td>
+        <td>8.50</td>
+        <td>100 pcs</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
+      </tr><tr>
+        <td>12/05/2020</td>
+        <td>School Supplies</td>
+        <td>Monggol</td>
+        <td>Pencil</td>
+        <td>8.50</td>
+        <td>100 pcs</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
+          <button class="button btn-outline-danger rounded px-1">Delete</button>
+        </th>
+      </tr><tr>
+        <td>12/05/2020</td>
+        <td>School Supplies</td>
+        <td>Monggol</td>
+        <td>Pencil</td>
+        <td>8.50</td>
+        <td>100 pcs</td>
+        <th>
+          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
           <button class="button btn-outline-danger rounded px-1">Delete</button>
         </th>
       </tr>
-      <tr>
-        <td>09/10/2020</td>
-        <td>Gwyneth</td>
-        <td>Ballesteros</td>
-        <td>04/15/1999</td>
-        <td>Hindang</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1">View</button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
-      <tr>
-        <td>09/09/2020</td>
-        <td>Rad Brandon</td>
-        <td>Porras</td>
-        <td>04/15/1999</td>
-        <td>Surigao City</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1">View</button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
-      <tr>
-        <td>09/08/2020</td>
-        <td>Mary Rose</td>
-        <td>Casamayor</td>
-        <td>04/15/1999</td>
-        <td>Tacloban City</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1">View</button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
-      <tr>
-        <td>09/10/2020</td>
-        <td>Divizia Vera</td>
-        <td>Perez</td>
-        <td>04/15/1999</td>
-        <td>Baybay City</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1">View</button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
-      <tr>
-        <td>09/10/2020</td>
-        <td>John Kase</td>
-        <td>Rubio</td>
-        <td>04/15/1999</td>
-        <td>Pasig City</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1">View</button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
-      <tr>
-        <td>09/11/2020</td>
-        <td>Rey Joshua</td>
-        <td>Macarat</td>
-        <td>04/15/1999</td>
-        <td>Quezon City</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1">View</button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
+      
     </tbody>
     <tfoot>
       <tr>
         <th>Date Registered</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Birth Date</th>
-        <th>City Address</th>
-        <th>Options</th>
+        <th>Category</th>
+        <th>Brand</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>No. of Items</th>
+        <th></th>
       </tr>
     </tfoot>
   </table>
 </div>
+
+<div id="open-modal" class="modal-window">
+  <div>
+    <a href="#" title="Close" class="modal-close">Close</a>
+    <h2 class='modal-head'>Customer Info</h2>
+    <h4>Rey Joshua H. Macarat</h4>
+    <h6>Male</h6>
+    <h5>Cebu City</h5>
+    <h6>04/15/1999</h6>
+    <h6>09054165470</h6>
+    <footer class='d-flex justify-content-end'> <button class='button btn btn-success'>Update</button></footer>
+    </div>
+</div>
+
+<div id="delete-modal"
+style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  "
+>
+  <div
+  style="
+  background-color: white;
+  padding: 20px;
+  width: 70%;
+  margin: 20px auto;
+  border-radius: 10px;
+  "
+  >
+  <p>Are you sure you want to delete?</p>
+
+  <div style="text-align: center;">
+    <button class="yes">cancel</button>
+    <button class="yes">yes</button>
+  </div>
+
+  </div
+  >
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>
+
+<script>
+  $(()=>{
+    $('.btn-outline-danger').click((e)=>{
+      $('#delete-modal').show()
+    })
+
+    $('.yes').click((e)=>{
+      $('#delete-modal').hide()
+    })
+  })
+  
+</script>
 {% endblock %}
