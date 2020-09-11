@@ -1,90 +1,152 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product Registration</title>
 
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link
+      href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/registration/product/styles.css' %}" />
 
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
     <!-- Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
     <!-- Bootstrap core CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <!-- Material Design Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css"
+      rel="stylesheet"
+    />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css">
-    <link rel="stylesheet" href="bs-stepper.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css"
+    />
 
     <script src="//code.jquery.com/jquery-1.12.4.js"></script>
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <nav class="navbar navbar-dark primary-color">
-        <h3 style="margin:auto;color:white">PRODUCT REGISTRATTION</h3>
+      <h3 style="margin: auto; color: white">PRODUCT REGISTRATTION</h3>
     </nav>
-    <div class="card-div" style="margin-bottom:20px">
-    <div class="card">
+    <div class="card-div" style="margin-bottom: 20px">
+      <div class="card">
         <div class="card-header">
-            <h3>Product Information</h3>
+          <h3>Product Information</h3>
         </div>
 
-        <div class="card-body" >
+        <div class="card-body">
+          <form action="" style="width: 90%; margin: auto">
+            <label for="category" class="mylabel">Category</label>
+            <input class="mb-4" type="text" placeholder="Category" />
+            <label for="category" class="mylabel">Name</label>
+            <input class="mb-4" type="text" placeholder="Name" />
+            <label for="category" class="mylabel">Brand</label>
+            <input class="mb-4" type="text" placeholder="Brand" />
+            <label for="category" class="mylabel">Color</label>
+            <input class="mb-4" type="text" placeholder="Color" />
+            <label for="category" class="mylabel">Size/Dimension</label>
+            <input class="mb-4" type="text" placeholder="Size/Dimension" />
 
-        <form action=""style="width:90%;margin:auto">
+            <label
+              for="price"
+              style="
+                background: #e9ecef;
+                padding: 6px 12px;
+                margin: 0;
+                border: 1px solid rgb(190, 190, 190);
+              "
+              >Price</label
+            >
+            <input
+              type="number"
+              name="price"
+              id="price"
+              style="margin: 0 130px 0 0; height: inherit"
+            />
 
-          <label for="category"class="mylabel">Category</label>
-          <input class="mb-4" type="text" placeholder="Category">
-          <label for="category"class="mylabel">Name</label>
-          <input class="mb-4" type="text" placeholder="Name">
-          <label for="category"class="mylabel">Brand</label>
-          <input class="mb-4" type="text" placeholder="Brand">
-          <label for="category"class="mylabel">Color</label>
-          <input class="mb-4" type="text" placeholder="Color">
-          <label for="category"class="mylabel">Size/Dimension</label>
-          <input class="mb-4" type="text" placeholder="Size/Dimension">
+            <label
+              for="numofstocks"
+              style="
+                background: #e9ecef;
+                padding: 6px 12px;
+                margin: 0;
+                border: 1px solid rgb(190, 190, 190);
+              "
+              >Number of stocks</label
+            >
+            <input
+              type="number"
+              name="numofstocks"
+              id="numofstocks"
+              style="margin: 0; height: inherit"
+            />
 
-          <label for="price" style="background:#E9ECEF;padding:6px 12px;margin:0;border:1px solid rgb(190, 190, 190);">Price</label>
-          <input type="number" name="price" id="price" style="margin:0 130px 0 0;height:inherit">
-
-          <label for="numofstocks" style="background:#E9ECEF;padding:6px 12px;margin:0;border:1px solid rgb(190, 190, 190);">Number of stocks</label>
-          <input type="number" name="numofstocks" id="numofstocks" style="margin:0;height:inherit">
-
-          <label for="category"class="mylabel mt-4">Image</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+            <label for="category" class="mylabel mt-4">Image</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+              </div>
+              <div class="custom-file">
+                <input
+                  type="file"
+                  class="custom-file-input"
+                  id="inputGroupFile01"
+                  aria-describedby="inputGroupFileAddon01"
+                />
+                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+              </div>
             </div>
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" id="inputGroupFile01"
-                aria-describedby="inputGroupFileAddon01">
-              <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-            </div>
-          </div>
-          
-          <button class="btn btn-primary"type="submit" style="display: block;margin:20px auto">SUBMIT</button>
-        </form>
 
+            <button class="btn btn-primary" type="submit" style="display: block; margin: 20px auto">
+              SUBMIT
+            </button>
+          </form>
         </div>
-    </div>
+      </div>
     </div>
 
-    <script src="index.js"></script>
+    <script src="{% static 'js/registration/product/index.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css"></script>
     <!-- JQuery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    ></script>
     <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"
+    ></script>
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"
+    ></script>
     <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
-</body>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"
+    ></script>
+  </body>
 </html>

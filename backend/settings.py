@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # project apps
     'backend.user',
+    'backend.product',
 
     # django apps
     'django.contrib.admin',
