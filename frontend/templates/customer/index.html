@@ -215,4 +215,50 @@
     <footer class='d-flex justify-content-end'> <button class='button btn btn-success'>Update</button></footer>
     </div>
 </div>
+
+<div id="delete-modal"
+style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  "
+>
+  <div
+  style="
+  background-color: white;
+  padding: 20px;
+  width: 70%;
+  margin: 20px auto;
+  border-radius: 10px;
+  "
+  >
+  <p>Are you sure you want to delete?</p>
+
+  <div style="text-align: center;">
+    <button class="yes">cancel</button>
+    <button class="yes">yes</button>
+  </div>
+
+  </div
+  >
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>
+
+<script>
+  $(()=>{
+    $('.btn-outline-danger').click((e)=>{
+      $('#delete-modal').show()
+    })
+
+    $('.yes').click((e)=>{
+      $('#delete-modal').hide()
+    })
+  })
+  
+</script>
 {% endblock %}
