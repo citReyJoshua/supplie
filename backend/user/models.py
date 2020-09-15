@@ -8,7 +8,7 @@ class Person(models.Model):
     first_name = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT)
     middle_name = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT, blank=True, default='')
     last_name = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT)
-    profile_pic = models.ImageField(upload_to='static/images/customer/profile-pics/')
+    profile_pic = models.ImageField(upload_to='frontend/static/images/customer/profile-pics/')
     birthdate = models.DateField()
     birthplace = models.CharField(max_length=globals.MAX_LENGTH_LONG)
     status = models.CharField(max_length=globals.MAX_LENGTH_SHORT,
