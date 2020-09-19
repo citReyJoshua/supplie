@@ -3,11 +3,12 @@
 SINGLE = 'SI'
 WIDOW = 'WI'
 MARRIED = 'MA'
-
+DIVORCED = 'DI'
 CHOICES_STATUS = (
     (SINGLE, 'Single'),
     (WIDOW, 'Widow/er'),
     (MARRIED, 'Married'),
+    (DIVORCED, 'Divorced'),
 )
 
 MALE = 'M'

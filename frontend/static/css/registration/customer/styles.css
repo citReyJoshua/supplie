@@ -8,7 +8,13 @@
   width: 65%;
 }
 
-#step1-page-2, #step1-page-3, #step2-page-2, #step2-page-3, #step2-page-4, #step2-page-5 {
+#step1-page-2,
+#step1-page-3,
+#step2-page-2,
+#step2-page-3,
+#step2-page-4,
+#step2-page-5 {
   display: none;
 }
+
 /*# sourceMappingURL=styles.css.map */
