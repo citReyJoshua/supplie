@@ -9,22 +9,20 @@ class Person(models.Model):
     middle_name = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT, null=True, blank=True)
     last_name = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT)
     email = models.EmailField()
-    phone_number = models.PositiveIntegerField()
-    birthdate = models.DateField(blank=True, null=True)
-    birthplace = models.CharField(max_length=globals.MAX_LENGTH_LONG)
+    phone_number = models.BigIntegerField()
+    birthdate = models.DateField()
+    birthplace = models.CharField(max_length=globals.MAX_LENGTH_LONG, null=True, blank=True)
     status = models.CharField(max_length=globals.MAX_LENGTH_SHORT,
                               choices=choices.CHOICES_STATUS, default=choices.SINGLE)
     gender = models.CharField(max_length=globals.MAX_LENGTH_SHORT,
                               choices=choices.CHOICES_GENDER, default=choices.NOT_SPECIFIED)
     no_of_children = models.PositiveIntegerField(default=0)
-    email = models.EmailField()
-    phone_number = models.PositiveIntegerField()
 
     # address fields
-    brgy = models.CharField(verbose_name='Barangay', max_length=globals.MAX_LENGTH_SHORT, null=True, blank=True)
-    province = models.CharField(max_length=globals.MAX_LENGTH_SHORT, null=True, blank=True)
-    city = models.CharField(max_length=globals.MAX_LENGTH_SHORT, null=True, blank=True)
-    country = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT, null=True, blank=True)
+    brgy = models.CharField(verbose_name='Barangay', max_length=globals.MAX_LENGTH_SHORT)
+    province = models.CharField(max_length=globals.MAX_LENGTH_SHORT)
+    city = models.CharField(max_length=globals.MAX_LENGTH_SHORT)
+    country = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT)
     zip_code = models.PositiveIntegerField()
 
     # spouse fields
@@ -40,8 +38,8 @@ class Person(models.Model):
     mother_last_name = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT, null=True, blank=True)
     mother_occupation = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT, null=True, blank=True)
 
-    height = models.FloatField(verbose_name='Height (cm)')
-    weight = models.FloatField(verbose_name='weight (kg)')
+    height = models.FloatField(verbose_name='Height (cm)', blank=True, null=True)
+    weight = models.FloatField(verbose_name='weight (kg)', blank=True, null=True)
     religion = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT, null=True, blank=True)
 
     class Meta:

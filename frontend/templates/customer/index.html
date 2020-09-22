@@ -29,171 +29,66 @@ Customer Dashboard
       </tr>
     </thead>
     <tbody>
+      {% for customer in customers %}
       <tr>
-        <td>12/05/2020</td>
-        <td>Donna</td>
-        <td>Sniper</td>
-        <td>04/15/1999</td>
-        <td>Surigao City</td>
+        <td>{{ customer.date_registered }}</td>
+        <td>{{ customer.first_name }}</td>
+        <td>{{ customer.last_name }}</td>
+        <td>{{ customer.birthdate }}</td>
+        <td>{{ customer.city }}</td>
         <th>
           <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
           <button class="button btn-outline-danger rounded px-1">Delete</button>
         </th>
       </tr>
-      <tr>
-        <td>12/05/2011</td>
-        <td>Dave</td>
-        <td>Gamboa</td>
-        <td>04/15/1999</td>
-        <td>Cebu City</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
-      <tr>
-        <td>10/15/2020</td>
-        <td>Orlan Jr.</td>
-        <td>Quijada</td>
-        <td>04/15/1999</td>
-        <td>Mandaue City</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
-      <tr>
-        <td>01/16/2020</td>
-        <td>Jubeth</td>
-        <td>Ollave</td>
-        <td>04/15/1999</td>
-        <td>Liloan City</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
-      <tr>
-        <td>11/01/2020</td>
-        <td>Jan Dale</td>
-        <td>Amores</td>
-        <td>04/15/1999</td>
-        <td>Jolo City</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
-      <tr>
-        <td>11/01/2020</td>
-        <td>Donnalyn</td>
-        <td>Bartolome</td>
-        <td>04/15/1999</td>
-        <td>Makati City</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
-      <tr>
-        <td>06/06/2020</td>
-        <td>Queen Jenny Rose</td>
-        <td>Villanueva</td>
-        <td>04/15/1999</td>
-        <td>Ormoc City</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
-      <tr>
-        <td>12/01/2020</td>
-        <td>Kim</td>
-        <td>Tan</td>
-        <td>04/15/1999</td>
-        <td>Cebu City</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
-      <tr>
-        <td>12/05/2020</td>
-        <td>Lucio</td>
-        <td>Chi</td>
-        <td>04/15/1999</td>
-        <td>Zamboanga City</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
-      <tr>
-        <td>09/10/2020</td>
-        <td>Gwyneth</td>
-        <td>Ballesteros</td>
-        <td>04/15/1999</td>
-        <td>Hindang</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
-      <tr>
-        <td>09/09/2020</td>
-        <td>Rad Brandon</td>
-        <td>Porras</td>
-        <td>04/15/1999</td>
-        <td>Surigao City</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
-      <tr>
-        <td>09/08/2020</td>
-        <td>Mary Rose</td>
-        <td>Casamayor</td>
-        <td>04/15/1999</td>
-        <td>Tacloban City</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
-      <tr>
-        <td>09/10/2020</td>
-        <td>Divizia Vera</td>
-        <td>Perez</td>
-        <td>04/15/1999</td>
-        <td>Baybay City</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
-      <tr>
-        <td>09/10/2020</td>
-        <td>John Kase</td>
-        <td>Rubio</td>
-        <td>04/15/1999</td>
-        <td>Pasig City</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
-      <tr>
-        <td>09/11/2020</td>
-        <td>Rey Joshua</td>
-        <td>Macarat</td>
-        <td>04/15/1999</td>
-        <td>Quezon City</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
+
+      <div id="open-modal" class="modal-window">
+        <div>
+          <a href="#" title="Close" class="modal-close">Close</a>
+          <h2 class='modal-head'>Customer Info</h2>
+          <h4>Rey Joshua H. Macarat</h4>
+          <h6>Male</h6>
+          <h5>Cebu City</h5>
+          <h6>04/15/1999</h6>
+          <h6>09054165470</h6>
+          <footer class='d-flex justify-content-end'> <button class='button btn btn-success'>Update</button></footer>
+          </div>
+      </div>
+      
+      <div id="delete-modal"
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vw;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+        "
+      >
+        <div
+        style="
+        background-color: white;
+        padding: 20px;
+        width: 70%;
+        margin: 20px auto;
+        border-radius: 10px;
+        "
+        >
+        <p>Are you sure you want to delete?</p>
+      
+        <div style="text-align: center;">
+          <button class="yes">cancel</button>
+          <button class="yes">yes</button>
+        </div>
+      
+        </div
+        >
+      </div>
+
+
+      {% endfor %}
+      
     </tbody>
     <tfoot>
       <tr>
@@ -208,49 +103,7 @@ Customer Dashboard
   </table>
 </div>
 
-<div id="open-modal" class="modal-window">
-  <div>
-    <a href="#" title="Close" class="modal-close">Close</a>
-    <h2 class='modal-head'>Customer Info</h2>
-    <h4>Rey Joshua H. Macarat</h4>
-    <h6>Male</h6>
-    <h5>Cebu City</h5>
-    <h6>04/15/1999</h6>
-    <h6>09054165470</h6>
-    <footer class='d-flex justify-content-end'> <button class='button btn btn-success'>Update</button></footer>
-    </div>
-</div>
 
-<div id="delete-modal"
-style="
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vw;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: none;
-  "
->
-  <div
-  style="
-  background-color: white;
-  padding: 20px;
-  width: 70%;
-  margin: 20px auto;
-  border-radius: 10px;
-  "
-  >
-  <p>Are you sure you want to delete?</p>
-
-  <div style="text-align: center;">
-    <button class="yes">cancel</button>
-    <button class="yes">yes</button>
-  </div>
-
-  </div
-  >
-</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>
 
