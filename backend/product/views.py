@@ -34,7 +34,6 @@ class ProductRegistrationView(View):
 
                 instance.product_images.add(product_image)
 
-            print(image1)
             return redirect('/product/')
 
         print(request.POST)

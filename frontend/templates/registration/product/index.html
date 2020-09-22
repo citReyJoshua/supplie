@@ -54,9 +54,8 @@
         <div class="card-header">
           <h3>Product Information</h3>
         </div>
-
         <div class="card-body">
-          <form action="" method="POST" style="width: 90%; margin: auto">
+          <form action="" method="POST" style="width: 90%; margin: auto" enctype="multipart/form-data">
             {% csrf_token %}
             <label for="category" class="mylabel">Category</label>
             <input name="category" class="mb-4" type="text" placeholder="Category" />
@@ -111,7 +110,7 @@
                   id="inputGroupFile01"
                   aria-describedby="inputGroupFileAddon01"
                 />
-                <label class="mr-4 custom-file-label" for="inputGroupFile01">Choose file</label>
+                <label class="mr-4 custom-file-label clip" for="inputGroupFile01">Choose file</label>
               </div>
               <div class="input-group-prepend">
               </div>
@@ -123,7 +122,7 @@
                   id="inputGroupFile01"
                   aria-describedby="inputGroupFileAddon01"
                 />
-                <label class="mr-4 custom-file-label" for="inputGroupFile01">Choose file</label>
+                <label class="mr-4 custom-file-label clip" for="inputGroupFile01">Choose file</label>
               </div>
               <div class="input-group-prepend">
 
@@ -136,7 +135,7 @@
                   id="inputGroupFile01"
                   aria-describedby="inputGroupFileAddon01"
                 />
-                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                <label class="custom-file-label clip" for="inputGroupFile01">Choose file</label>
               </div>
             </div>
 

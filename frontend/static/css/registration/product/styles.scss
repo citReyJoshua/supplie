@@ -1,16 +1,21 @@
-*{
-    margin:0;
-    padding:0;
+* {
+  margin: 0;
+  padding: 0;
 }
-.card-div{
-    margin:auto;
-    width: 65%;
+.card-div {
+  margin: auto;
+  width: 65%;
 }
-.mylabel{
-    font-size: 1.3em;
-    display:block;
+.mylabel {
+  font-size: 1.3em;
+  display: block;
 }
-input[type='text']{
-    width: 100%;
-    height: 40px;
+input[type="text"] {
+  width: 100%;
+  height: 40px;
+}
+
+.clip {
+  display: inline-block;
+  overflow: hidden;
 }

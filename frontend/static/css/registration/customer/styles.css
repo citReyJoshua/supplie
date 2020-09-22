@@ -17,4 +17,14 @@
   display: none;
 }
 
+.zipcode::-webkit-outer-spin-button,
+.zipcode::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.zipcode[type="number"] {
+  -moz-appearance: textfield;
+}
 /*# sourceMappingURL=styles.css.map */

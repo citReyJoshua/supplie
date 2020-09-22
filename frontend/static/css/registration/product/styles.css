@@ -13,8 +13,13 @@
   display: block;
 }
 
-input[type='text'] {
+input[type="text"] {
   width: 100%;
   height: 40px;
+}
+
+.clip {
+  display: inline-block;
+  overflow: hidden;
 }
 /*# sourceMappingURL=styles.css.map */
