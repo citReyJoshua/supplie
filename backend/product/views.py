@@ -36,5 +36,4 @@ class ProductRegistrationView(View):
 
             return redirect('/product/')
 
-        print(request.POST)
         return HttpResponse(form.errors)

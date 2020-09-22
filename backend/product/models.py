@@ -25,4 +25,4 @@ class ProductImage(models.Model):
         db_table = 'Product_Image'
 
     def __str__(self):
-        return f'{self.product_id} - image'
+        return f'{self.product_id} - image'  # pylint: disable=no-member
