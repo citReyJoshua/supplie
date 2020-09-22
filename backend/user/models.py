@@ -6,10 +6,11 @@ from . import choices
 class Person(models.Model):
 
     first_name = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT)
-    middle_name = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT, blank=True, default='')
+    middle_name = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT, null=True, blank=True)
     last_name = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT)
-    profile_pic = models.ImageField(upload_to='frontend/static/images/customer/profile-pics/')
-    birthdate = models.DateField()
+    email = models.EmailField()
+    phone_number = models.PositiveIntegerField()
+    birthdate = models.DateField(blank=True, null=True)
     birthplace = models.CharField(max_length=globals.MAX_LENGTH_LONG)
     status = models.CharField(max_length=globals.MAX_LENGTH_SHORT,
                               choices=choices.CHOICES_STATUS, default=choices.SINGLE)
@@ -20,10 +21,10 @@ class Person(models.Model):
     phone_number = models.PositiveIntegerField()
 
     # address fields
-    city = models.CharField(max_length=globals.MAX_LENGTH_SHORT)
-    province = models.CharField(max_length=globals.MAX_LENGTH_SHORT)
-    brgy = models.CharField(verbose_name='Barangay', max_length=globals.MAX_LENGTH_SHORT)
-    country = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT)
+    brgy = models.CharField(verbose_name='Barangay', max_length=globals.MAX_LENGTH_SHORT, null=True, blank=True)
+    province = models.CharField(max_length=globals.MAX_LENGTH_SHORT, null=True, blank=True)
+    city = models.CharField(max_length=globals.MAX_LENGTH_SHORT, null=True, blank=True)
+    country = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT, null=True, blank=True)
     zip_code = models.PositiveIntegerField()
 
     # spouse fields
@@ -32,9 +33,11 @@ class Person(models.Model):
     spouse_occupation = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT, null=True, blank=True)
 
     # parent's fields
-    father_name = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT, null=True, blank=True)
+    father_first_name = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT, null=True, blank=True)
+    father_last_name = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT, null=True, blank=True)
     father_occupation = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT, null=True, blank=True)
-    mother_name = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT, null=True, blank=True)
+    mother_first_name = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT, null=True, blank=True)
+    mother_last_name = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT, null=True, blank=True)
     mother_occupation = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT, null=True, blank=True)
 
     height = models.FloatField(verbose_name='Height (cm)')
@@ -45,7 +48,8 @@ class Person(models.Model):
         db_table = 'Person'
 
     def __str__(self):
-        return self.last_name + ', ' + self.first_name + self.middle_name
+
+        return self.last_name + ', ' + self.first_name
 
 
 class Customer(Person):
@@ -54,6 +58,3 @@ class Customer(Person):
 
     class Meta:
         db_table = 'Customer'
-
-    def __str__(self):
-        return super.__str__()

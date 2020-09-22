@@ -2,129 +2,330 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Customer Registration</title>
 
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-    
-    <link rel="stylesheet" href="{% static 'css/registration/customer/styles.css' %}">
+    <style>
+      .zipcode::-webkit-outer-spin-button,
+      .zipcode::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
 
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+      /* Firefox */
+      .zipcode[type="number"] {
+        -moz-appearance: textfield;
+      }
+    </style>
+
+    <link
+      href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="{% static 'css/registration/customer/styles.css' %}" />
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
     <!-- Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
     <!-- Bootstrap core CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <!-- Material Design Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css"
+      rel="stylesheet"
+    />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css"
+    />
     <!-- <link rel="stylesheet" href="bs-stepper.min.css"> -->
 
     <script src="//code.jquery.com/jquery-1.12.4.js"></script>
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <nav class="navbar navbar-dark primary-color">
-        <h3 style="margin:auto;color:white">CUSTOMER REGISTRATION</h3>
+      <h3 style="margin: auto; color: white">CUSTOMER REGISTRATION</h3>
     </nav>
-    <div class="card-div" >
-    <div class="card"style="height: 85vh;">
-        <div class="card-header">
+    <form action="" method="POST">
+      {% csrf_token %}
+      <div class="card-div">
+        <div class="card" style="height: 85vh">
+          <div class="card-header">
             <div class="bs-stepper" id="stepper1">
-                <div class="bs-stepper-header" role="tablist">
-                  <!-- your steps here -->
-                  <div class="step active" data-target="#personal-information-part">
-                    <button type="button" class="step-trigger" role="tab" aria-controls="personal-information-part" id="personal-information-part-trigger">
-                      <span class="bs-stepper-circle">1</span>
-                      <span class="bs-stepper-label">Personal Information</span>
-                    </button>
-                  </div>
-                  <div class="line"></div>
-                  <div class="step" data-target="#educational-background-part">
-                    <button type="button" class="step-trigger" role="tab" aria-controls="educational-background-part" id="educational-background-part-trigger">
-                      <span class="bs-stepper-circle">2</span>
-                      <span class="bs-stepper-label">Educational Background</span>
-                    </button>
-                  </div>
-                  <div class="line"></div>
-                  <div class="step" data-target="#professional-background-part">
-                    <button type="button" class="step-trigger" role="tab" aria-controls="professional-background-part" id="professional-background-part-trigger">
-                      <span class="bs-stepper-circle">3</span>
-                      <span class="bs-stepper-label">Professional Background</span>
-                    </button>
-                  </div>
+              <div class="bs-stepper-header" role="tablist">
+                <!-- your steps here -->
+                <div class="step" data-target="#personal-information-part">
+                  <button
+                    type="button"
+                    class="step-trigger"
+                    role="tab"
+                    aria-controls="personal-information-part"
+                    id="personal-information-part-trigger"
+                  >
+                    <h1 class="bs-stepper-label">Personal Information</h1>
+                  </button>
                 </div>
-                
               </div>
-        </div>
-        <div class="card-body">
+            </div>
+          </div>
+          <div class="card-body">
             <div class="bs-stepper-content">
-                <!-- your steps content here -->
-                <form action="#">
-                <div id="personal-information-part" class="bs-stepper-pane active" role="tabpanel" aria-labelledby="personal-information-part-trigger">
-                    
+              <!-- your steps content here -->
+              <form action="#">
+                <div
+                  id="personal-information-part"
+                  class="bs-stepper-pane active"
+                  role="tabpanel"
+                  aria-labelledby="personal-information-part-trigger"
+                >
                   <div id="step1-page-1">
                     <div class="input-group mb-4 mt-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text">First and last name</span>
-                        </div>
-                        <input type="text" aria-label="First name" class="form-control" style="height:inherit">
-                        <input type="text" aria-label="Last name" class="form-control"style="height:inherit">
-                      </div>
-
-                      <div class="input-group mb-4">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text" id="inputGroup-sizing-default">Address</span>
-                        </div>
-                        <input type="text" class="form-control" aria-label="Address" aria-describedby="inputGroup-sizing-default"style="height:inherit">
-                      </div>
-
-                      <div class="input-group mb-4">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text" id="inputGroup-sizing-default">Birthdate</span>
-                        </div>
-                        <input type="text" class="form-control" aria-label="Birthdate" aria-describedby="inputGroup-sizing-default"style="height:inherit">
-                      </div>
-
-                      <label for="status" style="background:#E9ECEF;padding:6px 12px;margin:0;border:1px solid rgb(190, 190, 190);">STATUS</label>
-                      <select name="status" id="status">
-                          <option value="single">Single</option>
-                          <option value="married">Married</option>
-                          <option value="widow/er">Widow/er</option>
-                          <option value="divorced">Divorced</option>
-                      </select>
-
-                      <label for="gender" style="background:#E9ECEF;padding:6px 12px;margin:0;border:1px solid rgb(190, 190, 190);">GENDER</label>
-                      <select name="gender" id="gender">
-                        <option value="male">Male</option>
-                        <option value="married">Female</option>
-                    </select>
-                  </div>
-
-                  <div id="step1-page-2">
-                    <div class="input-group mb-4 mt-3">
                       <div class="input-group-prepend">
-                        <span class="input-group-text">Spouse's first and last name</span>
+                        <span class="input-group-text">Name</span>
                       </div>
-                      <input type="text" aria-label="First name" class="form-control" style="height:inherit">
-                      <input type="text" aria-label="Last name" class="form-control"style="height:inherit">
+                      <input
+                        name="first_name"
+                        type="text"
+                        aria-label="First name"
+                        placeholder="First Name"
+                        class="form-control"
+                        style="height: inherit"
+                        required
+                      />
+                      <input
+                        name="middle_name"
+                        type="text"
+                        aria-label="Middle name"
+                        placeholder="Middle Name"
+                        class="form-control"
+                        style="height: inherit"
+                      />
+                      <input
+                        name="last_name"
+                        type="text"
+                        aria-label="Last name"
+                        placeholder="Last Name"
+                        class="form-control"
+                        style="height: inherit"
+                        required
+                      />
                     </div>
 
                     <div class="input-group mb-4">
                       <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-default">Spouse Occupation</span>
+                        <span class="input-group-text" id="inputGroup-sizing-default">Address</span>
                       </div>
-                      <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"style="height:inherit">
+                      <input
+                        name="brgy"
+                        placeholder="Barangay"
+                        type="text"
+                        class="form-control"
+                        aria-label="barangay"
+                        aria-describedby="inputGroup-sizing-default"
+                        style="height: inherit"
+                      />
+                      <input
+                        name="province"
+                        placeholder="Province"
+                        type="text"
+                        class="form-control"
+                        aria-label="province"
+                        aria-describedby="inputGroup-sizing-default"
+                        style="height: inherit"
+                      />
+                    </div>
+                    <div class="d-flex">
+                      <input
+                        name="city"
+                        placeholder="City"
+                        type="text"
+                        class="form-control"
+                        aria-label="city"
+                        aria-describedby="inputGroup-sizing-default"
+                        style="height: inherit"
+                      />
+                      <input
+                        name="country"
+                        placeholder="Country"
+                        type="text"
+                        class="form-control"
+                        aria-label="country"
+                        aria-describedby="inputGroup-sizing-default"
+                        style="height: inherit"
+                      />
+                      <input
+                        name="zip_code"
+                        placeholder="Zip Code"
+                        type="number"
+                        class="form-control zipcode"
+                        aria-label="zipcode"
+                        aria-describedby="inputGroup-sizing-default"
+                        style="height: inherit"
+                      />
+                    </div>
+                    <div class="input-group mb-4">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+                      </div>
+                      <input
+                        name="email"
+                        type="email"
+                        class="form-control"
+                        aria-label="Email"
+                        aria-describedby="inputGroup-sizing-default"
+                        style="height: inherit"
+                        required
+                      />
+                    </div>
+                    <div class="input-group mb-4">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default"
+                          >Phone Number</span
+                        >
+                      </div>
+                      <input
+                        name="phone_number"
+                        type="number"
+                        class="form-control zipcode"
+                        aria-label="Phone number"
+                        aria-describedby="inputGroup-sizing-default"
+                        style="height: inherit"
+                      />
+                    </div>
+                  </div>
+
+                  <div id="step1-page-2">
+                    <div class="input-group mb-4">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default"
+                          >Birthdate</span
+                        >
+                      </div>
+                      <input
+                        name="birthdate"
+                        type="date"
+                        class="form-control"
+                        aria-label="Birthdate"
+                        aria-describedby="inputGroup-sizing-default"
+                        style="height: inherit"
+                      />
+                    </div>
+                    <div class="input-group mb-4">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default"
+                          >Birthplace</span
+                        >
+                      </div>
+                      <input
+                        name="birthplace"
+                        type="text"
+                        class="form-control"
+                        aria-label="Birthdate"
+                        aria-describedby="inputGroup-sizing-default"
+                        style="height: inherit"
+                      />
+                    </div>
+                    <label
+                      for="status"
+                      style="
+                        background: #e9ecef;
+                        padding: 6px 12px;
+                        margin: 0;
+                        border: 1px solid rgb(190, 190, 190);
+                      "
+                      >STATUS</label
+                    >
+                    <select name="status" id="status">
+                      <option value="SI">Single</option>
+                      <option value="MA">Married</option>
+                      <option value="WI">Widow/er</option>
+                      <option value="DI">Divorced</option>
+                    </select>
+
+                    <label
+                      for="gender"
+                      style="
+                        background: #e9ecef;
+                        padding: 6px 12px;
+                        margin: 0;
+                        border: 1px solid rgb(190, 190, 190);
+                      "
+                      >SEX</label
+                    >
+                    <select name="gender" id="gender">
+                      <option value="M">Male</option>
+                      <option value="F">Female</option>
+                      <option value="NS">Do not Specify</option>
+                    </select>
+                    <div class="input-group mb-4 mt-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Spouse's first and last name</span>
+                      </div>
+                      <input
+                        name="spouse_first_name"
+                        type="text"
+                        aria-label="First name"
+                        class="form-control"
+                        style="height: inherit"
+                      />
+                      <input
+                        name="spouse_last_name"
+                        type="text"
+                        aria-label="Last name"
+                        class="form-control"
+                        style="height: inherit"
+                      />
                     </div>
 
-                    <label for="numofchildren" style="background:#E9ECEF;padding:6px 12px;margin:0;border:1px solid rgb(190, 190, 190);">NO. OF CHILDREN</label>
-                    <input type="number" name="numofchildren" id="numofchildren" style="margin:0;height:inherit">
+                    <div class="input-group mb-4">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default"
+                          >Spouse Occupation</span
+                        >
+                      </div>
+                      <input
+                        name="spouse_occupation"
+                        type="text"
+                        class="form-control"
+                        aria-describedby="inputGroup-sizing-default"
+                        style="height: inherit"
+                      />
+                    </div>
+
+                    <label
+                      for="numofchildren"
+                      style="
+                        background: #e9ecef;
+                        padding: 6px 12px;
+                        margin: 0;
+                        border: 1px solid rgb(190, 190, 190);
+                      "
+                      >NO. OF CHILDREN</label
+                    >
+                    <input
+                      type="number"
+                      name="no_of_children"
+                      id="numofchildren"
+                      style="margin: 0; height: inherit"
+                    />
                   </div>
 
                   <div id="step1-page-3">
@@ -132,33 +333,120 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text">Mother's first and last name</span>
                       </div>
-                      <input type="text" aria-label="First name" class="form-control" style="height:inherit">
-                      <input type="text" aria-label="Last name" class="form-control"style="height:inherit">
+                      <input
+                        name="mother_first_name"
+                        type="text"
+                        aria-label="First name"
+                        class="form-control"
+                        style="height: inherit"
+                      />
+                      <input
+                        name="mother_last_name"
+                        type="text"
+                        aria-label="Last name"
+                        class="form-control"
+                        style="height: inherit"
+                      />
+                    </div>
+                    <div class="input-group mb-4">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default"
+                          >Occupation</span
+                        >
+                      </div>
+                      <input
+                        name="mother_occupation"
+                        type="text"
+                        class="form-control"
+                        aria-describedby="inputGroup-sizing-default"
+                        style="height: inherit"
+                      />
                     </div>
 
                     <div class="input-group mb-4 mt-3">
                       <div class="input-group-prepend">
                         <span class="input-group-text">Father's first and last name</span>
                       </div>
-                      <input type="text" aria-label="First name" class="form-control" style="height:inherit">
-                      <input type="text" aria-label="Last name" class="form-control"style="height:inherit">
+                      <input
+                        name="father_first_name"
+                        type="text"
+                        aria-label="First name"
+                        class="form-control"
+                        style="height: inherit"
+                      />
+                      <input
+                        name="father_last_name"
+                        type="text"
+                        aria-label="Last name"
+                        class="form-control"
+                        style="height: inherit"
+                      />
                     </div>
-
-                    <label for="height" style="background:#E9ECEF;padding:6px 12px;margin:0;border:1px solid rgb(190, 190, 190);">Height</label>
-                    <input type="number" name="height" id="height" style="margin:0;height:inherit">
-
-                    <label for="weight" style="background:#E9ECEF;padding:6px 12px;margin:0;border:1px solid rgb(190, 190, 190);">Weight</label>
-                    <input type="number" name="weight" id="weight" style="margin:0;height:inherit">
-
-                    <div class="input-group mt-4 ">
+                    <div class="input-group mb-4">
                       <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-default">Religion</span>
+                        <span class="input-group-text" id="inputGroup-sizing-default"
+                          >Occupation</span
+                        >
                       </div>
-                      <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"style="height:inherit">
+                      <input
+                        name="father_occupation"
+                        type="text"
+                        class="form-control"
+                        aria-describedby="inputGroup-sizing-default"
+                        style="height: inherit"
+                      />
+                    </div>
+                    <label
+                      for="height"
+                      style="
+                        background: #e9ecef;
+                        padding: 6px 12px;
+                        margin: 0;
+                        border: 1px solid rgb(190, 190, 190);
+                      "
+                      >Height</label
+                    >
+                    <input
+                      type="number"
+                      name="height"
+                      id="height"
+                      style="margin: 0; height: inherit"
+                    />
+
+                    <label
+                      for="weight"
+                      style="
+                        background: #e9ecef;
+                        padding: 6px 12px;
+                        margin: 0;
+                        border: 1px solid rgb(190, 190, 190);
+                      "
+                      >Weight</label
+                    >
+                    <input
+                      type="number"
+                      name="weight"
+                      id="weight"
+                      style="margin: 0; height: inherit"
+                    />
+
+                    <div class="input-group mt-4">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default"
+                          >Religion</span
+                        >
+                      </div>
+                      <input
+                        name="religion"
+                        type="text"
+                        class="form-control"
+                        aria-describedby="inputGroup-sizing-default"
+                        style="height: inherit"
+                      />
                     </div>
                   </div>
 
-                  <div id ="step1-pagination" style="position: absolute;left:45px;bottom:50px;">
+                  <div id="step1-pagination" style="position: absolute; left: 45px; bottom: 50px">
                     <nav aria-label="Page navigation example">
                       <ul class="pagination pg-blue">
                         <li class="page-item">
@@ -167,232 +455,48 @@
                         <li class="page-item active"><a class="page-link">1</a></li>
                         <li class="page-item"><a class="page-link">2</a></li>
                         <li class="page-item"><a class="page-link">3</a></li>
-                        <li class="page-item ">
-                          <a class="page-link">Next</a>
-                        </li>
-                      </ul>
-                    </nav>
-                  </div>
-                    
-                <button type="button" class="btn btn-primary" onclick="personalInformationNext()"style="position: absolute;right:50px;bottom:50px">Step 2</button>
-                </div>
-
-
-                <div id="educational-background-part" class="bs-stepper-pane" role="tabpanel" aria-labelledby="educational-background-part-trigger">
-                  <div id="step2-page-1">
-                  <h5>Elementary</h5>
-
-                    <div class="input-group mb-4 mt-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-default">School</span>
-                      </div>
-                      <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"style="height:inherit">
-                    </div>
-
-                  <label for="grade" style="background:#E9ECEF;padding:6px 12px;margin:0;border:1px solid rgb(190, 190, 190);">Grade</label>
-                  <input type="number" name="grade" id="grade" style="margin:0;height:inherit">
-
-                  <label for="yrcompleted" style="background:#E9ECEF;padding:6px 12px;margin:0;border:1px solid rgb(190, 190, 190);">Year Completed</label>
-                  <input type="number" name="yrcompleted" id="yrcompleted" style="margin:0;height:inherit">
-                  
-                  <div class="input-group  mt-4">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroup-sizing-default">Awards</span>
-                    </div>
-                    <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"style="height:inherit">
-                  </div>
-                </div>
-
-                <div id="step2-page-2">
-                  <h5>Junior High School</h5>
-
-                    <div class="input-group mb-4 mt-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-default">School</span>
-                      </div>
-                      <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"style="height:inherit">
-                    </div>
-
-                  <label for="grade" style="background:#E9ECEF;padding:6px 12px;margin:0;border:1px solid rgb(190, 190, 190);">Grade</label>
-                  <input type="number" name="grade" id="grade" style="margin:0;height:inherit">
-
-                  <label for="yrcompleted" style="background:#E9ECEF;padding:6px 12px;margin:0;border:1px solid rgb(190, 190, 190);">Year Completed</label>
-                  <input type="number" name="yrcompleted" id="yrcompleted" style="margin:0;height:inherit">
-                  
-                  <div class="input-group mt-4">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroup-sizing-default">Awards</span>
-                    </div>
-                    <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"style="height:inherit">
-                  </div>
-                </div>
-
-                <div id="step2-page-3">
-                  <h5>Senior High School</h5>
-
-                    <div class="input-group mb-3 mt-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-default">School</span>
-                      </div>
-                      <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"style="height:inherit">
-                    </div>
-
-                  <label for="grade" style="background:#E9ECEF;padding:6px 12px;margin:0;border:1px solid rgb(190, 190, 190);">Grade</label>
-                  <input type="number" name="grade" id="grade" style="margin:0;height:inherit">
-
-                  <label for="yrcompleted" style="background:#E9ECEF;padding:6px 12px;margin:0;border:1px solid rgb(190, 190, 190);">Year Completed</label>
-                  <input type="number" name="yrcompleted" id="yrcompleted" style="margin:0;height:inherit">
-                  
-                  <div class="input-group mb-3 mt-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroup-sizing-default">Awards</span>
-                    </div>
-                    <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"style="height:inherit">
-                  </div>
-
-                  <div class="input-group mb-3 mt-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroup-sizing-default">Strand</span>
-                    </div>
-                    <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"style="height:inherit">
-                  </div>
-
-                </div>
-
-                <div id="step2-page-4">
-                  <h5>College</h5>
-
-                    <div class="input-group mb-3 mt-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-default">School</span>
-                      </div>
-                      <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"style="height:inherit">
-                    </div>
-
-                    <div class="input-group mb-3 mt-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-default">Course</span>
-                      </div>
-                      <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"style="height:inherit">
-                    </div>
-
-                  <label for="grade" style="background:#E9ECEF;padding:6px 12px;margin:0;border:1px solid rgb(190, 190, 190);">Level</label>
-                  <input type="number" name="grade" id="grade" style="margin:0;height:inherit">
-
-                  <label for="yrcompleted" style="background:#E9ECEF;padding:6px 12px;margin:0;border:1px solid rgb(190, 190, 190);">Year Completed</label>
-                  <input type="number" name="yrcompleted" id="yrcompleted" style="margin:0;height:inherit">
-                  
-                  <div class="input-group mb-3 mt-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroup-sizing-default">Awards</span>
-                    </div>
-                    <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"style="height:inherit">
-                  </div>
-                </div>
-
-                <div id="step2-page-5">
-                  <h5>Post Graduate</h5>
-
-                    <div class="input-group mb-3 mt-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-default">School</span>
-                      </div>
-                      <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"style="height:inherit">
-                    </div>
-
-                    <div class="input-group mb-3 mt-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-default">Course</span>
-                      </div>
-                      <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"style="height:inherit">
-                    </div>
-
-                  <label for="grade" style="background:#E9ECEF;padding:6px 12px;margin:0;border:1px solid rgb(190, 190, 190);">Level</label>
-                  <input type="number" name="grade" id="grade" style="margin:0;height:inherit">
-
-                  <label for="yrcompleted" style="background:#E9ECEF;padding:6px 12px;margin:0;border:1px solid rgb(190, 190, 190);">Year Completed</label>
-                  <input type="number" name="yrcompleted" id="yrcompleted" style="margin:0;height:inherit">
-                  
-                  <div class="input-group mb-3 mt-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroup-sizing-default">Awards</span>
-                    </div>
-                    <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"style="height:inherit">
-                  </div>
-                </div>
-
-                  <div id="step2-pagination" style="position: absolute;left:45px;bottom:50px;">
-                    <nav aria-label="Page navigation example">
-                      <ul class="pagination pg-blue">
                         <li class="page-item">
-                          <a class="page-link" tabindex="-1">Previous</a>
-                        </li>
-                        <li class="page-item active"><a class="page-link">1</a></li>
-                        <li class="page-item"><a class="page-link">2</a></li>
-                        <li class="page-item"><a class="page-link">3</a></li>
-                        <li class="page-item"><a class="page-link">4</a></li>
-                        <li class="page-item"><a class="page-link">5</a></li>
-                        <li class="page-item ">
                           <a class="page-link">Next</a>
                         </li>
                       </ul>
                     </nav>
                   </div>
-
-                  <button type="button"class="btn btn-primary" onclick="educationalBackgroundPrev()"style="position: absolute;right:200px;bottom:50px">Step 1</button>
-                    <button type="button"class="btn btn-primary" onclick="educationalBackgroundNext()"style="position: absolute;right:50px;bottom:50px">Step 3</button>
+                  <button
+                    class="btn btn-primary"
+                    type="submit"
+                    style="position: absolute; right: 50px; bottom: 50px"
+                  >
+                    Submit
+                  </button>
                 </div>
-
-                <div id="professional-background-part" class="bs-stepper-pane" role="tabpanel" aria-labelledby="professional-background-part-trigger">
-                  
-                  <h5>Trainings</h5>
-
-                    <div class="input-group mb-3 mt-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-default">Title</span>
-                      </div>
-                      <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"style="height:inherit">
-                    </div>
-
-                    <div class="input-group mb-3 mt-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-default">Sponsor</span>
-                      </div>
-                      <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"style="height:inherit">
-                    </div>
-
-                    <div class="input-group mb-3 mt-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-default">Date</span>
-                      </div>
-                      <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"style="height:inherit">
-                    </div>
-                  
-                  <div class="input-group mb-3 mt-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroup-sizing-default">Venue</span>
-                    </div>
-                    <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"style="height:inherit">
-                  </div>
-
-
-                    <button class="btn btn-primary" type="submit" style="position: absolute;right:50px;bottom:50px">Submit</button>
-                </div>
-            </form>
-              </div>
+              </form>
+            </div>
+          </div>
         </div>
-    </div>
-    </div>
+      </div>
+    </form>
 
     <script src="{% static 'js/registration/customer/index.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css"></script>
     <!-- JQuery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    ></script>
     <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"
+    ></script>
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"
+    ></script>
     <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
-</body>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"
+    ></script>
+  </body>
 </html>

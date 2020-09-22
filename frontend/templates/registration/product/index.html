@@ -56,17 +56,16 @@
         </div>
 
         <div class="card-body">
-          <form action="" style="width: 90%; margin: auto">
+          <form action="" method="POST" style="width: 90%; margin: auto">
+            {% csrf_token %}
             <label for="category" class="mylabel">Category</label>
-            <input class="mb-4" type="text" placeholder="Category" />
+            <input name="category" class="mb-4" type="text" placeholder="Category" />
             <label for="category" class="mylabel">Name</label>
-            <input class="mb-4" type="text" placeholder="Name" />
+            <input name="name" class="mb-4" type="text" placeholder="Name" />
             <label for="category" class="mylabel">Brand</label>
-            <input class="mb-4" type="text" placeholder="Brand" />
+            <input name="brand" class="mb-4" type="text" placeholder="Brand" />
             <label for="category" class="mylabel">Color</label>
-            <input class="mb-4" type="text" placeholder="Color" />
-            <label for="category" class="mylabel">Size/Dimension</label>
-            <input class="mb-4" type="text" placeholder="Size/Dimension" />
+            <input name="color" class="mb-4" type="text" placeholder="Color" />
 
             <label
               for="price"
@@ -86,7 +85,7 @@
             />
 
             <label
-              for="numofstocks"
+              for="no_of_stocks"
               style="
                 background: #e9ecef;
                 padding: 6px 12px;
@@ -97,18 +96,41 @@
             >
             <input
               type="number"
-              name="numofstocks"
+              name="no_of_stocks"
               id="numofstocks"
               style="margin: 0; height: inherit"
             />
 
-            <label for="category" class="mylabel mt-4">Image</label>
+            <label for="category" class="mylabel mt-4">Images</label>
             <div class="input-group">
+              <div class="custom-file">
+                <input
+                  name = 'image1'
+                  type="file"
+                  class="custom-file-input"
+                  id="inputGroupFile01"
+                  aria-describedby="inputGroupFileAddon01"
+                />
+                <label class="mr-4 custom-file-label" for="inputGroupFile01">Choose file</label>
+              </div>
               <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
               </div>
               <div class="custom-file">
                 <input
+                  name = 'image2'
+                  type="file"
+                  class="custom-file-input"
+                  id="inputGroupFile01"
+                  aria-describedby="inputGroupFileAddon01"
+                />
+                <label class="mr-4 custom-file-label" for="inputGroupFile01">Choose file</label>
+              </div>
+              <div class="input-group-prepend">
+
+              </div>
+              <div class="custom-file">
+                <input
+                  name = 'image3'
                   type="file"
                   class="custom-file-input"
                   id="inputGroupFile01"
