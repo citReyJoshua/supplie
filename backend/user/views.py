@@ -12,6 +12,8 @@ class CustomerView(View):
         customers = Customer.objects.all()  # pylint: disable=no-member
         context = {
             'customers': customers,
+            'status_choices': status_choices,
+            'gender_choices': gender_choices,
         }
         return render(request, 'customer/index.html', context)
 

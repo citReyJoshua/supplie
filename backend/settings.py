@@ -79,13 +79,13 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-     'default': {
+    'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'supplie_db',
         'USER': 'shiro',
         'PASSWORD': 'TaLkinGBarK3',
         'HOST': '127.0.0.1',
-        'PORT': '3306', 
+        'PORT': '3306',
     }
 }
 
@@ -131,4 +131,4 @@ STATICFILES_DIRS = [
 ]
 
 
-STATIC_URL = '/static/'
+STATIC_URL = '/frontend/static/'

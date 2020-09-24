@@ -1,10 +1,10 @@
 {% extends 'sections/base.html' %}
+{% load static %}
 {% block title %}
 Customer Dashboard
 {% endblock %}
 
 {% block content %}
-
 <div class="container">
   
   <div class="d-flex align-items-center justify-content-between">
@@ -37,27 +37,395 @@ Customer Dashboard
         <td>{{ customer.birthdate }}</td>
         <td>{{ customer.city }}</td>
         <th>
-          <button id="open" class="button btn-outline-primary rounded px-1"><a href="#open-modal{{ customer.id }}">View</a></button>
-          <button id="delete" class="button btn-outline-danger rounded px-1"><a href="#delete-modal{{ customer.id }}">Delete</a></button>
+          <a href="#open-modal{{ customer.id }}"><button id="open" class="button btn-outline-primary rounded px-1">View</button></a>
+          <a href="#delete-modal{{ customer.id }}"><button id="delete" class="button btn-outline-danger rounded px-1">Delete</button></a>
         </th>
       </tr>
+      
       <div id="open-modal{{ customer.id }}" class="modal-window">
-        <div>
-          <a href="#" title="Close" class="modal-close">Close</a>
-          <h2 class='modal-head'>Customer Info</h2>
-          <h4>Rey Joshua H. Macarat</h4>
-          <h6>Male</h6>
-          <h5>Cebu City</h5>
-          <h6>04/15/1999</h6>
-          <h6>09054165470</h6>
-          <footer class='d-flex justify-content-end'> <button class='button btn btn-success'>Update</button></footer>
+        <div class='modal-window--big'>
+          <a href="#" title="Close" class="modal-close">&#x2716</a>
+          <div class="input-group mb-4 mt-3">
+            <div class="input-group my-2 d-flex align-content-center justify-content-center">
+            <div class="d-flex justify-content-center">
+              {% if customer.profile_pic.url is not None %}
+              <img src="{{ customer.profile_pic.url }}" 
+              id="output" alt="profile_picture" width="75" height="75" style="object-fit: cover; border-radius: 50%; width:75; height:75">
+              {% else %}
+              <img src="{% static 'images/assets/add-image.jpg' %}" 
+              id="output" alt="profile_picture" width="75" height="75" style="object-fit: cover; border-radius: 50%; width:75; height:75">
+              {% endif %}
+            </div>
+              <input type="file" class="" id="file" style="width: 20vw; display:none;" name="profile_pic" onchange="loadFile(event)" />
+                <label for="file" class="btn-primary rounded-circle text-center" style="cursor: pointer; width:20px; height: 20px">+</label>
+            </div>                 
+            <div class="input-group-prepend">
+              <span class="input-group-text">Name</span>
+            </div>
+            <input
+              name="first_name"
+              type="text"
+              aria-label="First name"
+              placeholder="{{ customer.first_name }}"
+              class="form-control"
+              style="height: inherit"
+              required
+            />
+            <input
+              name="middle_name"
+              type="text"
+              aria-label="Middle name"
+              placeholder="{{ customer.middle_name }}"
+              class="form-control"
+              style="height: inherit"
+            />
+            <input
+              name="last_name"
+              type="text"
+              aria-label="Last name"
+              placeholder="{{ customer.last_name }}"
+              class="form-control"
+              style="height: inherit"
+              required
+            />
+          </div>
+
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Address</span>
+            </div>
+            <input
+              name="brgy"
+              placeholder="{{ customer.brgy }}"
+              type="text"
+              class="form-control"
+              aria-label="barangay"
+              aria-describedby="inputGroup-sizing-default"
+              style="height: inherit"
+            />
+            <input
+              name="province"
+              placeholder="{{ customer.province }}"
+              type="text"
+              class="form-control"
+              aria-label="province"
+              aria-describedby="inputGroup-sizing-default"
+              style="height: inherit"
+            />
+            <input
+              name="city"
+              placeholder="{{ customer.city }}"
+              type="text"
+              class="form-control"
+              aria-label="city"
+              aria-describedby="inputGroup-sizing-default"
+              style="height: inherit"
+            />
+            <input
+              name="country"
+              placeholder="{{ customer.country }}"
+              type="text"
+              class="form-control"
+              aria-label="country"
+              aria-describedby="inputGroup-sizing-default"
+              style="height: inherit"
+            />
+            <input
+              name="zip_code"
+              placeholder="{{ customer.zip_code }}"
+              type="number"
+              class="form-control no-dropdown"
+              aria-label="zipcode"
+              min="0"
+              aria-describedby="inputGroup-sizing-default"
+              style="height: inherit"
+            />
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend mb-0">
+              <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+            </div>
+            <input
+              name="email"
+              type="email"
+              placeholder="{{ customer.email }}"
+              class="form-control"
+              aria-label="Email"
+              aria-describedby="inputGroup-sizing-default"
+              style="height: inherit"
+              required
+            />
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default"
+                >Phone Number</span
+              >
+            </div>
+            <input
+              name="phone_number"
+              type="number"
+              placeholder="{{ customer.phone_number }}"
+              class="form-control no-dropdown"
+              min="0"
+              aria-label="Phone number"
+              aria-describedby="inputGroup-sizing-default"
+              style="height: inherit"
+            />
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend mb-0">
+              <span class="input-group-text" id="inputGroup-sizing-default"
+                >Birthdate</span
+              >
+            </div>
+            <input
+              name="birthdate"
+              type="date"
+              class="form-control"
+              aria-label="Birthdate"
+              aria-describedby="inputGroup-sizing-default"
+              style="height: inherit"
+            />
+            <label
+            for="status"
+            style="
+              background: #e9ecef;
+              padding: 6px 12px;
+              margin: 0;
+              border: 1px solid rgb(190, 190, 190);
+            "
+            >STATUS</label
+          >
+          <select name="status" id="status">
+            {% for status in status_choices %}
+              {% if status.0 == customer.status %}
+                <option value="{{ status.0 }}" selected>{{ status.1 }}</option>
+              {% else %}
+                <option value="{{ status.0 }}">{{ status.1 }}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+
+          <label
+            for="gender"
+            style="
+              background: #e9ecef;
+              padding: 6px 12px;
+              margin: 0;
+              border: 1px solid rgb(190, 190, 190);
+            "
+            >SEX</label
+          >
+          <select name="gender" id="gender">
+            {% for sex in gender_choices %}
+              {% if sex.0 == customer.gender %}
+              <option value="{{ sex.0 }}" selected> {{ sex.1 }}</option>
+              {% else %}
+              <option value="{{ sex.0 }}"> {{ sex.1 }}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend mb-0">
+              <span class="input-group-text" id="inputGroup-sizing-default"
+                >Birthplace</span
+              >
+            </div>
+            <input
+              name="birthplace"
+              placeholder="{{ customer.birthplace }}"
+              type="text"
+              class="form-control"
+              aria-label="Birthdate"
+              aria-describedby="inputGroup-sizing-default"
+              style="height: inherit"
+            />
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default"
+                >Religion</span>
+            </div>
+            <input
+              name="religion"
+              placeholder="{{ customer.religion }}"
+              type="text"
+              class="form-control"
+              aria-describedby="inputGroup-sizing-default"
+              style="height: inherit"
+            />
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend mb-0">
+              <span class="input-group-text">Spouse's first and last name</span>
+            </div>
+            <input
+              name="spouse_first_name"
+              placeholder="{{ customer.spouse_first_name }}"
+              type="text"
+              aria-label="First name"
+              class="form-control"
+              style="height: inherit"
+            />
+            <input
+              name="spouse_last_name"
+              placeholder="{{ customer.spouse_last_name }}"
+              type="text"
+              aria-label="Last name"
+              class="form-control"
+              style="height: inherit"
+            />
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default"
+                >Occupation</span
+              >
+            </div>
+            <input
+              name="spouse_occupation"
+              placeholder="{{ customer.spouse_occupation }}"
+              type="text"
+              class="form-control"
+              aria-describedby="inputGroup-sizing-default"
+              style="height: inherit"
+            />
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend mb-0">
+              <span class="input-group-text">Mother's first and last name</span>
+            </div>
+            <input
+              name="mother_first_name"
+              placeholder="{{ customer.mother_first_name }}"
+              type="text"
+              aria-label="First name"
+              class="form-control"
+              style="height: inherit"
+            />
+            <input
+              name="mother_last_name"
+              placeholder="{{ customer.mother_last_name }}"
+              type="text"
+              aria-label="Last name"
+              class="form-control"
+              style="height: inherit"
+            />
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default"
+                >Occupation</span
+              >
+            </div>
+            <input
+              name="mother_occupation"
+              placeholder="{{ customer.mother_occupation }}"
+              type="text"
+              class="form-control"
+              aria-describedby="inputGroup-sizing-default"
+              style="height: inherit"
+            />
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend mb-0">
+              <span class="input-group-text">Father's first and last name</span>
+            </div>
+            <input
+              name="father_first_name"
+              placeholder="{{ customer.father_first_name }}"
+              type="text"
+              aria-label="First name"
+              class="form-control"
+              style="height: inherit"
+            />
+            <input
+              name="father_last_name"
+              placeholder="{{ customer.father_last_name }}"
+              type="text"
+              aria-label="Last name"
+              class="form-control"
+              style="height: inherit"
+            />
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default"
+                >Occupation</span
+              >
+            </div>
+            <input
+              name="father_occupation"
+              placeholder="{{ customer.father_occupation }}"
+              type="text"
+              class="form-control"
+              aria-describedby="inputGroup-sizing-default"
+              style="height: inherit"
+            />
+          </div>
+          <div class="input-group">
+            <label
+                      for="numofchildren"
+                      style="
+                        background: #e9ecef;
+                        padding: 6px;
+                        margin: 0;
+                        border: 1px solid rgb(190, 190, 190);
+                      "
+                      >NO. OF CHILDREN</label
+                    >
+                    <input
+                      type="number"
+                      placeholder="{{ customer.no_of_children }}"
+                      name="no_of_children"
+                      id="numofchildren"
+                      style="margin: 0; height: inherit"
+                    />
+            <label
+                      for="height"
+                      style="
+                        background: #e9ecef;
+                        padding: 6px;
+                        margin: 0;
+                        border: 1px solid rgb(190, 190, 190);
+                      "
+                      >Height (cm)</label
+                    >
+                    <input
+                      type="number"
+                      placeholder="{{ customer.height }}"
+                      name="height"
+                      id="height"
+                      step="0.01"
+                      min="0"
+                      style="margin: 0; height: inherit"
+                    />
+
+                    <label
+                      for="weight"
+                      style="
+                        background: #e9ecef;
+                        padding: 6px;
+                        margin: 0;
+                        border: 1px solid rgb(190, 190, 190);
+                      "
+                      >Weight (kg)</label
+                    >
+                    <input
+                      type="number"
+                      placeholder="{{ customer.weight }}"
+                      name="weight"
+                      step="0.01"
+                      min="0"
+                      id="weight"
+                      style="margin: 0; height: inherit"
+                    />
+          </div>
+            <div class="input-group justify-content-end">
+              <div class="input-group-prepend">
+                <footer> <button class='button btn btn-success'>Update</button></footer>
+              </div>
+            </div>
           </div>
       </div>
       
       <div id="delete-modal{{ customer.id }}" class="modal-window">
-        <div class="p-0 pb-3">
-          <a href="#" title="Close" class="modal-close">Close</a>
-          <div class="modal-header mb-5" style="background-color: #CD5C5C !important;"><h2 style="color: whitesmoke;">Delete Entry?</h2></div>
+        <div class="p-0 pb-3 modal-window--small">
+          <a href="#" title="Close" class="modal-close">&#x2716</a>
+          <div class="modal-header mb-3 d-flex justify-content-center" style="background-color: rgb(56, 54, 54) !important;height:30px;"></div>
+          <h2 class="my-4 text-center">Delete Entry?</h2>
           <footer class='d-flex justify-content-center'> <button class='button btn btn-success'>Delete</button></footer>
           </div>
       </div>
@@ -103,7 +471,12 @@ Customer Dashboard
   </table>
 </div>
 
-
+<script>
+  var loadFile = function(event) {
+    var image = document.getElementById('output');
+    image.src = URL.createObjectURL(event.target.files[0]);
+  };
+</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>
 

@@ -6,6 +6,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %} Supplie {% endblock%}</title>
+    <style>
+      .no-dropdown[type="number"] {
+        appearance: textfield !important;
+        -moz-appearance: textfield !important;
+      }
+    </style>
     <link rel="stylesheet" type="text/css " href="{% static 'vendors/bootstrap.min.css' %}" />
     <link
       rel="stylesheet"
@@ -44,5 +50,10 @@
     ></script>
     {% include 'sections/footer.html' %}
     <script src="{% static 'js/main.js' %}"></script>
+    <script>
+      $(document).ready(function(){
+        $(".no-dropdown").numeric();
+     });
+    </script>
   </body>
 </html>
