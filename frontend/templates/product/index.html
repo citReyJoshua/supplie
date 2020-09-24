@@ -21,201 +21,39 @@ Product Dashboard
       <tr>
         <th>Date Registered</th>
         <th>Category</th>
-        <th>Brand</th>
         <th>Name</th>
+        <th>Brand</th>
         <th>Price</th>
+        <th>Color Variant</th>
         <th>No. of Items</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
+      {% for product in products %}
       <tr>
-        <td>12/05/2020</td>
-        <td>School Supplies</td>
-        <td>Monggol</td>
-        <td>Pencil</td>
-        <td>8.50</td>
-        <td>100 pcs</td>
+        <td>{{ product.date_registered }}</td>
+        <td>{{ product.get_category_display }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.brand }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.get_color_display }}</td>
+        <td>{{ product.no_of_stocks }} pcs</td>
         <th>
           <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
           <button class="button btn-outline-danger rounded px-1">Delete</button>
         </th>
       </tr>
-      <tr>
-        <td>12/05/2020</td>
-        <td>School Supplies</td>
-        <td>Monggol</td>
-        <td>Pencil</td>
-        <td>8.50</td>
-        <td>100 pcs</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr><tr>
-        <td>12/05/2020</td>
-        <td>School Supplies</td>
-        <td>Monggol</td>
-        <td>Pencil</td>
-        <td>8.50</td>
-        <td>100 pcs</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr><tr>
-        <td>12/05/2020</td>
-        <td>School Supplies</td>
-        <td>Monggol</td>
-        <td>Pencil</td>
-        <td>8.50</td>
-        <td>100 pcs</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr><tr>
-        <td>12/05/2020</td>
-        <td>School Supplies</td>
-        <td>Monggol</td>
-        <td>Pencil</td>
-        <td>8.50</td>
-        <td>100 pcs</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr><tr>
-        <td>12/05/2020</td>
-        <td>School Supplies</td>
-        <td>Monggol</td>
-        <td>Pencil</td>
-        <td>8.50</td>
-        <td>100 pcs</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr><tr>
-        <td>12/05/2020</td>
-        <td>School Supplies</td>
-        <td>Monggol</td>
-        <td>Pencil</td>
-        <td>8.50</td>
-        <td>100 pcs</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr><tr>
-        <td>12/05/2020</td>
-        <td>School Supplies</td>
-        <td>Monggol</td>
-        <td>Pencil</td>
-        <td>8.50</td>
-        <td>100 pcs</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr><tr>
-        <td>12/05/2020</td>
-        <td>School Supplies</td>
-        <td>Monggol</td>
-        <td>Pencil</td>
-        <td>8.50</td>
-        <td>100 pcs</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr><tr>
-        <td>12/05/2020</td>
-        <td>School Supplies</td>
-        <td>Monggol</td>
-        <td>Pencil</td>
-        <td>8.50</td>
-        <td>100 pcs</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr><tr>
-        <td>12/05/2020</td>
-        <td>School Supplies</td>
-        <td>Monggol</td>
-        <td>Pencil</td>
-        <td>8.50</td>
-        <td>100 pcs</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr><tr>
-        <td>12/05/2020</td>
-        <td>School Supplies</td>
-        <td>Monggol</td>
-        <td>Pencil</td>
-        <td>8.50</td>
-        <td>100 pcs</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr><tr>
-        <td>12/05/2020</td>
-        <td>School Supplies</td>
-        <td>Monggol</td>
-        <td>Pencil</td>
-        <td>8.50</td>
-        <td>100 pcs</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr><tr>
-        <td>12/05/2020</td>
-        <td>School Supplies</td>
-        <td>Monggol</td>
-        <td>Pencil</td>
-        <td>8.50</td>
-        <td>100 pcs</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr><tr>
-        <td>12/05/2020</td>
-        <td>School Supplies</td>
-        <td>Monggol</td>
-        <td>Pencil</td>
-        <td>8.50</td>
-        <td>100 pcs</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr><tr>
-        <td>12/05/2020</td>
-        <td>School Supplies</td>
-        <td>Monggol</td>
-        <td>Pencil</td>
-        <td>8.50</td>
-        <td>100 pcs</td>
-        <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
-        </th>
-      </tr>
-      
+      {% endfor %}
     </tbody>
     <tfoot>
       <tr>
         <th>Date Registered</th>
         <th>Category</th>
-        <th>Brand</th>
         <th>Name</th>
+        <th>Brand</th>
         <th>Price</th>
+        <th>Color Variant</th>
         <th>No. of Items</th>
         <th></th>
       </tr>

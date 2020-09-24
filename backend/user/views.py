@@ -31,7 +31,6 @@ class CustomerRegistrationView(View):
             form.save()
             return redirect('/customer/')
 
-        print('Invalid request.')
         return HttpResponse(form.errors)
 
 

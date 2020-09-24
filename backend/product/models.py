@@ -1,12 +1,14 @@
 from django.db import models
 from backend import globals
+from . import choices
 
 
 class Product(models.Model):
+    date_registered = models.DateField(auto_now_add=True)
     name = models.CharField(verbose_name='Product Name', max_length=globals.MAX_LENGTH_DEFAULT)
-    category = models.CharField(max_length=globals.MAX_LENGTH_SHORT)
+    category = models.CharField(max_length=globals.MAX_LENGTH_SHORT, choices=choices.Category.choices)
     brand = models.CharField(max_length=globals.MAX_LENGTH_SHORT, blank=True, null=True)
-    color = models.CharField(max_length=globals.MAX_LENGTH_SHORT, blank=True, null=True)
+    color = models.CharField(max_length=globals.MAX_LENGTH_SHORT, blank=True, null=True, choices=choices.Color.choices)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     no_of_stocks = models.PositiveIntegerField()
 
