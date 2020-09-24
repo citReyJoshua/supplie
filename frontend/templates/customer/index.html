@@ -37,12 +37,11 @@ Customer Dashboard
         <td>{{ customer.birthdate }}</td>
         <td>{{ customer.city }}</td>
         <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
+          <button id="open" class="button btn-outline-primary rounded px-1"><a href="#open-modal{{ customer.id }}">View</a></button>
+          <button id="delete" class="button btn-outline-danger rounded px-1"><a href="#delete-modal{{ customer.id }}">Delete</a></button>
         </th>
       </tr>
-
-      <div id="open-modal" class="modal-window">
+      <div id="open-modal{{ customer.id }}" class="modal-window">
         <div>
           <a href="#" title="Close" class="modal-close">Close</a>
           <h2 class='modal-head'>Customer Info</h2>
@@ -55,37 +54,38 @@ Customer Dashboard
           </div>
       </div>
       
-      <div id="delete-modal"
-      style="
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vw;
-        background-color: rgba(0, 0, 0, 0.5);
-        display: none;
-        "
-      >
-        <div
-        style="
-        background-color: white;
-        padding: 20px;
-        width: 70%;
-        margin: 20px auto;
-        border-radius: 10px;
-        "
-        >
-        <p>Are you sure you want to delete?</p>
-      
-        <div style="text-align: center;">
-          <button class="yes">cancel</button>
-          <button class="yes">yes</button>
-        </div>
-      
-        </div
-        >
+      <div id="delete-modal{{ customer.id }}" class="modal-window">
+        <div class="p-0 pb-3">
+          <a href="#" title="Close" class="modal-close">Close</a>
+          <div class="modal-header mb-5" style="background-color: #CD5C5C !important;"><h2 style="color: whitesmoke;">Delete Entry?</h2></div>
+          <footer class='d-flex justify-content-center'> <button class='button btn btn-success'>Delete</button></footer>
+          </div>
       </div>
+      
+      <script>
 
+        $(()=>{
+          $('#delete{{ customer.id }}').click((e)=>{
+            $('#delete-modal{{ customer.id }}').show()
+          })
+      
+          $('.yes').click((e)=>{
+            $('#delete-modal{{ customer.id }}').hide()
+          })
+        })
+
+        $(()=>{
+          $('#open{{ customer.id }}').click((e)=>{
+            $('#open-modal{{ customer.id }}').show()
+          })
+      
+          $('.yes').click((e)=>{
+            $('#open-modal{{ customer.id }}').hide()
+          })
+        })
+        
+      </script>
+      
 
       {% endfor %}
       
@@ -107,16 +107,4 @@ Customer Dashboard
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>
 
-<script>
-  $(()=>{
-    $('.btn-outline-danger').click((e)=>{
-      $('#delete-modal').show()
-    })
-
-    $('.yes').click((e)=>{
-      $('#delete-modal').hide()
-    })
-  })
-  
-</script>
 {% endblock %}
