@@ -26,7 +26,7 @@ class CustomerRegistrationView(View):
         return render(request, 'registration/customer/index.html', context)
 
     def post(self, request):
-        form = CustomerRegistrationForm(request.POST)
+        form = CustomerRegistrationForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('/customer/')
