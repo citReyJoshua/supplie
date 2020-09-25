@@ -1,4 +1,5 @@
 {% extends 'sections/base.html' %}
+{% load static %}
 {% block title %}
 Product Dashboard
 {% endblock %}
@@ -23,7 +24,7 @@ Product Dashboard
         <th>Category</th>
         <th>Name</th>
         <th>Brand</th>
-        <th>Price</th>
+        <th>Price (php)</th>
         <th>Color Variant</th>
         <th>No. of Items</th>
         <th></th>
@@ -40,11 +41,165 @@ Product Dashboard
         <td>{{ product.get_color_display }}</td>
         <td>{{ product.no_of_stocks }} pcs</td>
         <th>
-          <button class="button btn-outline-primary rounded px-1"><a href="#open-modal">View</a></button>
-          <button class="button btn-outline-danger rounded px-1">Delete</button>
+          <a href="#open-modal{{ product.id }}"><button id="open" class="button btn-outline-primary rounded px-1">View</button></a>
+          <a href="#delete-modal{{ product.id }}"><button id="delete" class="button btn-outline-danger rounded px-1">Delete</button></a>
         </th>
       </tr>
+      <div id="open-modal{{ product.id }}" class="modal-window">
+        <div class='modal-window--medium'>
+          <a href="#" title="Close" class="modal-close">&#x2716</a>
+          <div class="input-group mb-4 mt-3">
+            <div class="input-group my-2 d-flex align-content-center justify-content-center">
+                {% for product_image in images %}
+                  {% if product_image.product_id == product.id %}
+                  <div class="d-flex justify-content-center">
+                    <img src="{{ product_image.image.url }}" 
+                    id="output" alt="product_image" width="75" height="75" style=" border: 1px solid; object-fit: cover; border-radius: 10%; width:100; height:100">
+                  </div>
+                  <input type="file" class="" id="file" style="width: 20vw; display:none;" name="image{{ forloop.counter }}" onchange="loadFile(event)" />
+                    <label for="file" class="btn-primary rounded-circle text-center" style="margin: .5rem; cursor: pointer; width:20px; height: 20px">+</label>
+                  {% endif %}
+                {% endfor %}
+            </div>                   
+            <div class="input-group-prepend">
+              <span class="input-group-text">Name</span>
+            </div>
+            <input
+              name="name"
+              type="text"
+              aria-label="Name"
+              placeholder="{{ product.name }}"
+              class="form-control"
+              style="height: inherit"
+              required
+            />
+          </div>
+
+          <div class="input-group">
+            <div class="input-group-prepend mb-0">
+              <span class="input-group-text" id="inputGroup-sizing-default">Brand</span>
+            </div>
+            <input
+              name="brand"
+              type="text"
+              placeholder="{{ product.brand }}"
+              class="form-control"
+              aria-label="Brand"
+              aria-describedby="inputGroup-sizing-default"
+              style="height: inherit"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default"
+                >Price</span>
+            </div>
+            <input
+              name="price"
+              placeholder="{{ product.price|floatformat:2 }}"
+              type="number"
+              class="form-control"
+              aria-describedby="inputGroup-sizing-default"
+              style="height: inherit"
+            />
+          <label
+            for="category"
+            style="
+              background: #e9ecef;
+              padding: 6px 12px;
+              margin: 0;
+              border: 1px solid rgb(190, 190, 190);
+            "
+            >Category</label
+          >
+          <select name="category" id="category">
+            {% for category in categories %}
+              {% if category.0 == product.category %}
+              <option value="{{ category.0 }}" selected> {{ category.1 }}</option>
+              {% else %}
+              <option value="{{ category.0 }}"> {{ category.1 }}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend mb-0">
+              <span class="input-group-text" id="inputGroup-sizing-default"
+                >Stocks</span
+              >
+            </div>
+            <input
+              name="no_of_stocks"
+              placeholder="{{ product.no_of_stocks }}"
+              type="number"
+              class="form-control"
+              aria-label="Stocks"
+              aria-describedby="inputGroup-sizing-default"
+              style="height: inherit"
+            />
+            <label
+            for="color"
+            style="
+              background: #e9ecef;
+              padding: 6px 12px;
+              margin: 0;
+              border: 1px solid rgb(190, 190, 190);
+            "
+            >Color Variant</label
+          >
+          <select name="color" id="color">
+            {% for color in colors %}
+              {% if color.0 == product.color %}
+                <option value="{{ color.0 }}" selected>{{ color.1 }}</option>
+              {% else %}
+                <option value="{{ color.0 }}">{{ color.1 }}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+          </div>
+            <div class="input-group justify-content-end">
+              <div class="input-group-prepend">
+                <footer> <button class='button btn btn-success'>Update</button></footer>
+              </div>
+            </div>
+          </div>
+      </div>
+      
+      <div id="delete-modal{{ customer.id }}" class="modal-window">
+        <div class="p-0 pb-3 modal-window--small">
+          <a href="#" title="Close" class="modal-close">&#x2716</a>
+          <div class="modal-header mb-3 d-flex justify-content-center" style="background-color: rgb(56, 54, 54) !important;height:30px;"></div>
+          <h2 class="my-4 text-center">Delete Entry?</h2>
+          <footer class='d-flex justify-content-center'> <button class='button btn btn-success'>Delete</button></footer>
+          </div>
+      </div>
+      
+      <script>
+
+        $(()=>{
+          $('#delete{{ product.id }}').click((e)=>{
+            $('#delete-modal{{ product.id }}').show()
+          })
+      
+          $('.yes').click((e)=>{
+            $('#delete-modal{{ product.id }}').hide()
+          })
+        })
+
+        $(()=>{
+          $('#open{{ customer.id }}').click((e)=>{
+            $('#open-modal{{ product.id }}').show()
+          })
+      
+          $('.yes').click((e)=>{
+            $('#open-modal{{ product.id }}').hide()
+          })
+        })
+        
+      </script>
       {% endfor %}
+
     </tbody>
     <tfoot>
       <tr>
@@ -61,48 +216,6 @@ Product Dashboard
   </table>
 </div>
 
-<div id="open-modal" class="modal-window">
-  <div>
-    <a href="#" title="Close" class="modal-close">Close</a>
-    <h2 class='modal-head'>Customer Info</h2>
-    <h4>Rey Joshua H. Macarat</h4>
-    <h6>Male</h6>
-    <h5>Cebu City</h5>
-    <h6>04/15/1999</h6>
-    <h6>09054165470</h6>
-    <footer class='d-flex justify-content-end'> <button class='button btn btn-success'>Update</button></footer>
-    </div>
-</div>
-
-<div id="delete-modal"
-style="
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vw;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: none;
-  "
->
-  <div
-  style="
-  background-color: white;
-  padding: 20px;
-  width: 70%;
-  margin: 20px auto;
-  border-radius: 10px;
-  "
-  >
-  <p>Are you sure you want to delete?</p>
-
-  <div style="text-align: center;">
-    <button class="yes">cancel</button>
-    <button class="yes">yes</button>
-  </div>
-
-  </div
-  >
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>

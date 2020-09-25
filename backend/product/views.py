@@ -3,15 +3,20 @@ from django.views import View
 from django.http import HttpResponse
 from . import models
 from .forms import ProductRegistrationForm
-from .models import Product
+from .models import Product, ProductImage
 from .choices import Category as categories, Color as colors
 
 
 class ProductView(View):
     def get(self, request):
         products = Product.objects.all()  # pylint: disable=no-member
+        images = ProductImage.objects.all()  # pylint: disable=no-member
+
         context = {
             'products': products,
+            'images': images,
+            'categories': categories.choices,
+            'colors': colors.choices,
         }
         return render(request, 'product/index.html', context)
 
