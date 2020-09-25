@@ -95,4 +95,5 @@ db.sqlite3
 .vscode/
 
 # Images
-/frontend/static/images/
+/frontend/static/images/product/
+/frontend/static/images/customer/
