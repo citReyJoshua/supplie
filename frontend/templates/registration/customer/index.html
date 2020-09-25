@@ -64,32 +64,21 @@
     <nav class="navbar navbar-dark primary-color">
       <h3 style="margin: auto; color: white">CUSTOMER REGISTRATION</h3>
     </nav>
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       <div class="card-div">
         <div class="card" style="height: 85vh">
           <div class="card-header">
-            <div class="bs-stepper" id="stepper1">
-              <div class="bs-stepper-header" role="tablist">
+            
                 <!-- your steps here -->
-                <div class="step" data-target="#personal-information-part">
-                  <button
-                    type="button"
-                    class="step-trigger"
-                    role="tab"
-                    aria-controls="personal-information-part"
-                    id="personal-information-part-trigger"
-                  >
-                    <h1 class="bs-stepper-label">Personal Information</h1>
-                  </button>
+                <div class="step d-flex justify-content-center" data-target="#personal-information-part">
+                      <h3 class="bs-stepper-label">Personal Information</h3>
                 </div>
-              </div>
-            </div>
+        
           </div>
           <div class="card-body">
             <div class="bs-stepper-content">
               <!-- your steps content here -->
-              <form action="#">
                 <div
                   id="personal-information-part"
                   class="bs-stepper-pane active"
@@ -98,6 +87,14 @@
                 >
                   <div id="step1-page-1">
                     <div class="input-group mb-4 mt-3">
+                      <div class="input-group my-2 d-flex align-content-center justify-content-center">
+                      <div class="d-flex justify-content-center">
+                        <img src="{% static 'images/assets/add-image.jpg' %}" 
+                        id="output" alt="profile_picture" width="75" height="75" style="object-fit: cover; border-radius: 50%; width:75; height:75">
+                      </div>
+                        <input type="file" class="" id="file" style="width: 20vw; display:none;" name="profile_pic" onchange="loadFile(event)" />
+                          <label for="file" class="btn-primary rounded-circle text-center" style="cursor: pointer; width:20px; height: 20px">+</label>
+                      </div>                 
                       <div class="input-group-prepend">
                         <span class="input-group-text">Name</span>
                       </div>
@@ -254,10 +251,9 @@
                       >STATUS</label
                     >
                     <select name="status" id="status">
-                      <option value="SI">Single</option>
-                      <option value="MA">Married</option>
-                      <option value="WI">Widow/er</option>
-                      <option value="DI">Divorced</option>
+                      {% for status in status_choices %}
+                      <option value="{{ status.0 }}">{{ status.1 }}</option>
+                      {% endfor %}
                     </select>
 
                     <label
@@ -271,9 +267,9 @@
                       >SEX</label
                     >
                     <select name="gender" id="gender">
-                      <option value="M">Male</option>
-                      <option value="F">Female</option>
-                      <option value="NS">Do not Specify</option>
+                      {% for sex in gender_choices %}
+                      <option value="{{ sex.0 }}"> {{ sex.1 }}</option>
+                      {% endfor %}
                     </select>
                     <div class="input-group mb-4 mt-3">
                       <div class="input-group-prepend">
@@ -324,6 +320,7 @@
                       type="number"
                       name="no_of_children"
                       id="numofchildren"
+                      value="0"
                       style="margin: 0; height: inherit"
                     />
                   </div>
@@ -404,12 +401,14 @@
                         margin: 0;
                         border: 1px solid rgb(190, 190, 190);
                       "
-                      >Height</label
+                      >Height (cm)</label
                     >
                     <input
                       type="number"
                       name="height"
                       id="height"
+                      step="0.01"
+                      min="0"
                       style="margin: 0; height: inherit"
                     />
 
@@ -421,11 +420,13 @@
                         margin: 0;
                         border: 1px solid rgb(190, 190, 190);
                       "
-                      >Weight</label
+                      >Weight (kg)</label
                     >
                     <input
                       type="number"
                       name="weight"
+                      step="0.01"
+                      min="0"
                       id="weight"
                       style="margin: 0; height: inherit"
                     />
@@ -469,13 +470,17 @@
                     Submit
                   </button>
                 </div>
-              </form>
             </div>
           </div>
         </div>
       </div>
     </form>
-
+    <script>
+      var loadFile = function(event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+      };
+    </script>
     <script src="{% static 'js/registration/customer/index.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css"></script>
     <!-- JQuery -->

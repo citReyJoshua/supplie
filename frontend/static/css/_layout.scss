@@ -49,7 +49,7 @@ table {
     opacity: 1;
     pointer-events: auto;
   }
-  & > div {
+  &--small {
     width: 400px;
     position: absolute;
     top: 50%;
@@ -57,6 +57,29 @@ table {
     transform: translate(-50%, -50%);
     padding: 2em;
     background: #ffffff;
+    box-shadow: 10px 11px 13px -9px rgba(0, 0, 0, 0.75);
+  }
+  &--big {
+    width: 60vw;
+    height: 90vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2em;
+    background: #ffffff;
+    box-shadow: 10px 11px 13px -9px rgba(0, 0, 0, 0.75);
+  }
+  &--medium {
+    width: 47.5vw;
+    height: 55vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2em;
+    background: #ffffff;
+    box-shadow: 10px 11px 13px -9px rgba(0, 0, 0, 0.75);
   }
   header {
     font-weight: bold;
@@ -68,17 +91,21 @@ table {
 }
 
 .modal-close {
-  color: #aaa;
-  line-height: 50px;
-  font-size: 80%;
+  color: #f7665e;
+  background-color: #f7665e;
+  border-radius: 50%;
+  margin: 5px;
   position: absolute;
   right: 0;
   text-align: center;
   top: 0;
-  width: 70px;
+  width: 17.5px;
+  height: 17.5px;
+  transition: ease-in-out 200ms;
   text-decoration: none;
   &:hover {
-    color: black;
+    color: rgb(58, 56, 56);
+    transition: ease-in-out 100ms;
   }
 }
 

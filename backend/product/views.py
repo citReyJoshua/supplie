@@ -1,19 +1,34 @@
 from django.shortcuts import render, redirect
 from django.views import View
+from django.http import HttpResponse
 from . import models
 from .forms import ProductRegistrationForm
-from django.http import HttpResponse
+from .models import Product, ProductImage
+from .choices import Category as categories, Color as colors
 
 
 class ProductView(View):
-
     def get(self, request):
-        return render(request, 'product/index.html')
+        products = Product.objects.all()  # pylint: disable=no-member
+        images = ProductImage.objects.all()  # pylint: disable=no-member
+
+        context = {
+            'products': products,
+            'images': images,
+            'categories': categories.choices,
+            'colors': colors.choices,
+        }
+        return render(request, 'product/index.html', context)
 
 
 class ProductRegistrationView(View):
+
     def get(self, request):
-        return render(request, 'registration/product/index.html')
+        context = {
+            'categories': categories.choices,
+            'colors': colors.choices,
+        }
+        return render(request, 'registration/product/index.html', context)
 
     def post(self, request):
         form = ProductRegistrationForm(request.POST, request.FILES)
@@ -36,5 +51,4 @@ class ProductRegistrationView(View):
 
             return redirect('/product/')
 
-        print(request.POST)
         return HttpResponse(form.errors)
