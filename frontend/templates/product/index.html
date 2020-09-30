@@ -68,7 +68,7 @@ Product Dashboard
               name="name"
               type="text"
               aria-label="Name"
-              placeholder="{{ product.name }}"
+              value="{{ product.name }}"
               class="form-control"
               style="height: inherit"
               required
@@ -82,7 +82,7 @@ Product Dashboard
             <input
               name="brand"
               type="text"
-              placeholder="{{ product.brand }}"
+              value="{{ product.brand }}"
               class="form-control"
               aria-label="Brand"
               aria-describedby="inputGroup-sizing-default"
@@ -97,7 +97,7 @@ Product Dashboard
             </div>
             <input
               name="price"
-              placeholder="{{ product.price|floatformat:2 }}"
+              value="{{ product.price|floatformat:2 }}"
               type="number"
               class="form-control"
               aria-describedby="inputGroup-sizing-default"
@@ -131,7 +131,7 @@ Product Dashboard
             </div>
             <input
               name="no_of_stocks"
-              placeholder="{{ product.no_of_stocks }}"
+              value="{{ product.no_of_stocks }}"
               type="number"
               class="form-control"
               aria-label="Stocks"

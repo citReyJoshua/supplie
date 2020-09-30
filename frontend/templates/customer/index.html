@@ -66,7 +66,7 @@ Customer Dashboard
               name="first_name"
               type="text"
               aria-label="First name"
-              placeholder="{{ customer.first_name }}"
+              value="{{ customer.first_name }}"
               class="form-control"
               style="height: inherit"
               required
@@ -75,7 +75,7 @@ Customer Dashboard
               name="middle_name"
               type="text"
               aria-label="Middle name"
-              placeholder="{{ customer.middle_name }}"
+              value="{{ customer.middle_name }}"
               class="form-control"
               style="height: inherit"
             />
@@ -83,7 +83,7 @@ Customer Dashboard
               name="last_name"
               type="text"
               aria-label="Last name"
-              placeholder="{{ customer.last_name }}"
+              value="{{ customer.last_name }}"
               class="form-control"
               style="height: inherit"
               required
@@ -96,7 +96,7 @@ Customer Dashboard
             </div>
             <input
               name="brgy"
-              placeholder="{{ customer.brgy }}"
+              value="{{ customer.brgy }}"
               type="text"
               class="form-control"
               aria-label="barangay"
@@ -105,7 +105,7 @@ Customer Dashboard
             />
             <input
               name="province"
-              placeholder="{{ customer.province }}"
+              value="{{ customer.province }}"
               type="text"
               class="form-control"
               aria-label="province"
@@ -114,7 +114,7 @@ Customer Dashboard
             />
             <input
               name="city"
-              placeholder="{{ customer.city }}"
+              value="{{ customer.city }}"
               type="text"
               class="form-control"
               aria-label="city"
@@ -123,7 +123,7 @@ Customer Dashboard
             />
             <input
               name="country"
-              placeholder="{{ customer.country }}"
+              value="{{ customer.country }}"
               type="text"
               class="form-control"
               aria-label="country"
@@ -132,7 +132,7 @@ Customer Dashboard
             />
             <input
               name="zip_code"
-              placeholder="{{ customer.zip_code }}"
+              value="{{ customer.zip_code }}"
               type="number"
               class="form-control no-dropdown"
               aria-label="zipcode"
@@ -148,7 +148,7 @@ Customer Dashboard
             <input
               name="email"
               type="email"
-              placeholder="{{ customer.email }}"
+              value="{{ customer.email }}"
               class="form-control"
               aria-label="Email"
               aria-describedby="inputGroup-sizing-default"
@@ -163,7 +163,7 @@ Customer Dashboard
             <input
               name="phone_number"
               type="number"
-              placeholder="{{ customer.phone_number }}"
+              value="{{ customer.phone_number }}"
               class="form-control no-dropdown"
               min="0"
               aria-label="Phone number"
@@ -180,10 +180,12 @@ Customer Dashboard
             <input
               name="birthdate"
               type="date"
+              value="{{customer.birthdate|date:'Y-m-d'}}"
               class="form-control"
               aria-label="Birthdate"
               aria-describedby="inputGroup-sizing-default"
               style="height: inherit"
+              required
             />
             <label
             for="status"
@@ -233,10 +235,10 @@ Customer Dashboard
             </div>
             <input
               name="birthplace"
-              placeholder="{{ customer.birthplace }}"
+              value ="{{ customer.birthplace }}"
               type="text"
               class="form-control"
-              aria-label="Birthdate"
+              aria-label="Birthplace"
               aria-describedby="inputGroup-sizing-default"
               style="height: inherit"
             />
@@ -246,7 +248,7 @@ Customer Dashboard
             </div>
             <input
               name="religion"
-              placeholder="{{ customer.religion }}"
+              value="{{ customer.religion }}"
               type="text"
               class="form-control"
               aria-describedby="inputGroup-sizing-default"
@@ -259,7 +261,7 @@ Customer Dashboard
             </div>
             <input
               name="spouse_first_name"
-              placeholder="{{ customer.spouse_first_name }}"
+              value="{{ customer.spouse_first_name }}"
               type="text"
               aria-label="First name"
               class="form-control"
@@ -267,7 +269,7 @@ Customer Dashboard
             />
             <input
               name="spouse_last_name"
-              placeholder="{{ customer.spouse_last_name }}"
+              value="{{ customer.spouse_last_name }}"
               type="text"
               aria-label="Last name"
               class="form-control"
@@ -280,7 +282,7 @@ Customer Dashboard
             </div>
             <input
               name="spouse_occupation"
-              placeholder="{{ customer.spouse_occupation }}"
+              value="{{ customer.spouse_occupation }}"
               type="text"
               class="form-control"
               aria-describedby="inputGroup-sizing-default"
@@ -293,7 +295,7 @@ Customer Dashboard
             </div>
             <input
               name="mother_first_name"
-              placeholder="{{ customer.mother_first_name }}"
+              value="{{ customer.mother_first_name }}"
               type="text"
               aria-label="First name"
               class="form-control"
@@ -301,7 +303,7 @@ Customer Dashboard
             />
             <input
               name="mother_last_name"
-              placeholder="{{ customer.mother_last_name }}"
+              value="{{ customer.mother_last_name }}"
               type="text"
               aria-label="Last name"
               class="form-control"
@@ -314,7 +316,7 @@ Customer Dashboard
             </div>
             <input
               name="mother_occupation"
-              placeholder="{{ customer.mother_occupation }}"
+              value="{{ customer.mother_occupation }}"
               type="text"
               class="form-control"
               aria-describedby="inputGroup-sizing-default"
@@ -327,7 +329,7 @@ Customer Dashboard
             </div>
             <input
               name="father_first_name"
-              placeholder="{{ customer.father_first_name }}"
+              value="{{ customer.father_first_name }}"
               type="text"
               aria-label="First name"
               class="form-control"
@@ -335,7 +337,7 @@ Customer Dashboard
             />
             <input
               name="father_last_name"
-              placeholder="{{ customer.father_last_name }}"
+              value="{{ customer.father_last_name }}"
               type="text"
               aria-label="Last name"
               class="form-control"
@@ -348,7 +350,7 @@ Customer Dashboard
             </div>
             <input
               name="father_occupation"
-              placeholder="{{ customer.father_occupation }}"
+              value="{{ customer.father_occupation }}"
               type="text"
               class="form-control"
               aria-describedby="inputGroup-sizing-default"
@@ -369,7 +371,7 @@ Customer Dashboard
                     >
                     <input
                       type="number"
-                      placeholder="{{ customer.no_of_children }}"
+                      value="{{ customer.no_of_children }}"
                       name="no_of_children"
                       id="numofchildren"
                       style="margin: 0; height: inherit"
@@ -386,7 +388,7 @@ Customer Dashboard
                     >
                     <input
                       type="number"
-                      placeholder="{{ customer.height }}"
+                      value="{{ customer.height }}"
                       name="height"
                       id="height"
                       step="0.01"
@@ -406,7 +408,7 @@ Customer Dashboard
                     >
                     <input
                       type="number"
-                      placeholder="{{ customer.weight }}"
+                      value="{{ customer.weight }}"
                       name="weight"
                       step="0.01"
                       min="0"
