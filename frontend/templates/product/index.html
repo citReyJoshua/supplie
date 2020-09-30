@@ -166,7 +166,7 @@ Product Dashboard
           </div>
       </div>
       
-      <div id="delete-modal{{ customer.id }}" class="modal-window">
+      <div id="delete-modal{{ product.id }}" class="modal-window">
         <div class="p-0 pb-3 modal-window--small">
           <a href="#" title="Close" class="modal-close">&#x2716</a>
           <div class="modal-header mb-3 d-flex justify-content-center" style="background-color: rgb(56, 54, 54) !important;height:30px;"></div>
@@ -181,19 +181,11 @@ Product Dashboard
           $('#delete{{ product.id }}').click((e)=>{
             $('#delete-modal{{ product.id }}').show()
           })
-      
-          $('.yes').click((e)=>{
-            $('#delete-modal{{ product.id }}').hide()
-          })
         })
 
         $(()=>{
-          $('#open{{ customer.id }}').click((e)=>{
+          $('#open{{ product.id }}').click((e)=>{
             $('#open-modal{{ product.id }}').show()
-          })
-      
-          $('.yes').click((e)=>{
-            $('#open-modal{{ product.id }}').hide()
           })
         })
         
@@ -219,17 +211,6 @@ Product Dashboard
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>
-
-<script>
-  $(()=>{
-    $('.btn-outline-danger').click((e)=>{
-      $('#delete-modal').show()
-    })
-
-    $('.yes').click((e)=>{
-      $('#delete-modal').hide()
-    })
-  })
   
 </script>
 {% endblock %}
