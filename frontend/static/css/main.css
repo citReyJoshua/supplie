@@ -38,7 +38,6 @@ ul {
 
 * {
   font-family: "Baloo Chettan 2", cursive;
-  font-size: 1em;
 }
 
 .nav {
@@ -83,9 +82,15 @@ table {
   color: white;
 }
 
+.form-control {
+  font-size: 0.8rem !important;
+  padding: 0.5em 0.5em;
+}
+
 .modal-window {
   position: fixed;
   background-color: rgba(255, 255, 255, 0.25);
+  font-size: 0.8rem !important;
   top: 0;
   right: 0;
   bottom: 0;
@@ -111,7 +116,7 @@ table {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  padding: 2em;
+  padding: 1em;
   background: #ffffff;
   -webkit-box-shadow: 10px 11px 13px -9px rgba(0, 0, 0, 0.75);
           box-shadow: 10px 11px 13px -9px rgba(0, 0, 0, 0.75);
@@ -119,13 +124,13 @@ table {
 
 .modal-window--big {
   width: 60vw;
-  height: 90vh;
+  height: 95vh;
   position: absolute;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  padding: 2em;
+  padding: 1em;
   background: #ffffff;
   -webkit-box-shadow: 10px 11px 13px -9px rgba(0, 0, 0, 0.75);
           box-shadow: 10px 11px 13px -9px rgba(0, 0, 0, 0.75);
@@ -139,7 +144,7 @@ table {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  padding: 2em;
+  padding: 1em;
   background: #ffffff;
   -webkit-box-shadow: 10px 11px 13px -9px rgba(0, 0, 0, 0.75);
           box-shadow: 10px 11px 13px -9px rgba(0, 0, 0, 0.75);
