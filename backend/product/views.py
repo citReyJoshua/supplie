@@ -24,7 +24,7 @@ class ProductView(View):
         if request.method == 'POST':
             if 'btndelete' in request.POST:
                 id = request.POST.get('btndelete')
-                Product.objects.get(id=id).delete()
+                Product.objects.get(id=id).delete()  # pylint : disable=no-member
 
             elif 'btnupdate' in request.POST:
                 name = request.POST.get('name')
@@ -35,7 +35,7 @@ class ProductView(View):
                 no_of_stocks = request.POST.get('no_of_stocks')
 
                 id = request.POST.get('btnupdate')
-                Product.objects.filter(id=id).update(  # filter gigamit kay muerror basta get
+                Product.objects.filter(id=id).update(  # pylint: disable=no-member
                     name=name,
                     category=category,
                     brand=brand,
