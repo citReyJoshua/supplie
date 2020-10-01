@@ -20,6 +20,31 @@ class ProductView(View):
         }
         return render(request, 'product/index.html', context)
 
+    def post(self, request):
+        if request.method == 'POST':
+            if 'btndelete' in request.POST:
+                id = request.POST.get('btndelete')
+                Product.objects.get(id=id).delete()
+
+            elif 'btnupdate' in request.POST:
+                name = request.POST.get('name')
+                category = request.POST.get('category')
+                brand = request.POST.get('brand')
+                color = request.POST.get('color')
+                price = request.POST.get('price')
+                no_of_stocks = request.POST.get('no_of_stocks')
+
+                id = request.POST.get('btnupdate')
+                Product.objects.filter(id=id).update(  # filter gigamit kay muerror basta get
+                    name=name,
+                    category=category,
+                    brand=brand,
+                    color=color,
+                    price=price,
+                    no_of_stocks=no_of_stocks,
+                )
+        return redirect('/product/')
+
 
 class ProductRegistrationView(View):
 
@@ -44,7 +69,8 @@ class ProductRegistrationView(View):
             for img in (image1, image2, image3):
                 if not img:
                     continue
-                product_image = models.ProductImage(product=instance, image=img)
+                product_image = models.ProductImage(
+                    product=instance, image=img)
                 product_image.save()
 
                 instance.product_images.add(product_image)
