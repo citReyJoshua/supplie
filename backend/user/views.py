@@ -17,6 +17,20 @@ class CustomerView(View):
         }
         return render(request, 'customer/index.html', context)
 
+    def post(self, request):
+        if 'btndelete' in request.POST:
+            id = int(request.POST.get("btndelete"))
+            Customer.objects.get(id=id).delete()  # pylint: disable=no-member
+        elif 'btnupdate' in request.POST:
+            id = int(request.POST.get('btnupdate'))
+            customer_instance = Customer.objects.get(id=id)  # pylint: disable=no-member
+            form = CustomerRegistrationForm(request.POST, request.FILES,
+                                            instance=customer_instance)
+            if form.is_valid():
+                form.save()
+
+        return redirect('/customer/#')
+
 
 class CustomerRegistrationView(View):
 

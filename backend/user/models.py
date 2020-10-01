@@ -10,7 +10,8 @@ class Person(models.Model):
     last_name = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT)
     email = models.EmailField()
     phone_number = models.BigIntegerField()
-    profile_pic = models.ImageField(upload_to='frontend/static/images/customer/profile-pics/', null=True, blank=True)
+    profile_pic = models.ImageField(upload_to='frontend/static/images/customer/profile-pics/',
+                                    blank=True, default='frontend/static/images/assets/add-image.jpg')
     birthdate = models.DateField()
     birthplace = models.CharField(max_length=globals.MAX_LENGTH_LONG, null=True, blank=True)
     status = models.CharField(max_length=globals.MAX_LENGTH_SHORT,

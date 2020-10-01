@@ -7,19 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Customer Registration</title>
 
-    <style>
-      .zipcode::-webkit-outer-spin-button,
-      .zipcode::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
-
-      /* Firefox */
-      .zipcode[type="number"] {
-        -moz-appearance: textfield;
-      }
-    </style>
-
     <link
       href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css"
       rel="stylesheet"
@@ -61,6 +48,27 @@
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   </head>
   <body>
+    <style>
+      .zipcode::-webkit-outer-spin-button,
+      .zipcode::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+        .zipcode[type=number] {
+        -moz-appearance: textfield;
+      }
+      </style>
+      <script language=Javascript>
+        function isNumberKey(evt)
+        {
+           var charCode = (evt.which) ? evt.which : evt.keyCode;
+           if (charCode != 46 && charCode > 31 
+             && (charCode < 48 || charCode > 57))
+              return false;
+ 
+           return true;
+        }
+      </script>
     <nav class="navbar navbar-dark primary-color">
       <h3 style="margin: auto; color: white">CUSTOMER REGISTRATION</h3>
     </nav>
@@ -138,6 +146,7 @@
                         aria-label="barangay"
                         aria-describedby="inputGroup-sizing-default"
                         style="height: inherit"
+                        required
                       />
                       <input
                         name="province"
@@ -147,6 +156,7 @@
                         aria-label="province"
                         aria-describedby="inputGroup-sizing-default"
                         style="height: inherit"
+                        required
                       />
                     </div>
                     <div class="d-flex">
@@ -158,6 +168,7 @@
                         aria-label="city"
                         aria-describedby="inputGroup-sizing-default"
                         style="height: inherit"
+                        required
                       />
                       <input
                         name="country"
@@ -167,15 +178,21 @@
                         aria-label="country"
                         aria-describedby="inputGroup-sizing-default"
                         style="height: inherit"
+                        required
                       />
                       <input
                         name="zip_code"
                         placeholder="Zip Code"
-                        type="number"
+                        type="text"
                         class="form-control zipcode"
+                        oninvalid="this.setCustomValidity('Invalid Zipcode(4 digits)')"
+                        oninput="this.setCustomValidity('')"
+                        onkeypress="return isNumberKey(event)"
+                        maxlength="4"
                         aria-label="zipcode"
                         aria-describedby="inputGroup-sizing-default"
                         style="height: inherit"
+                        required
                       />
                     </div>
                     <div class="input-group mb-4">
@@ -185,6 +202,7 @@
                       <input
                         name="email"
                         type="email"
+                        placeholder="juandelacruz@example.com"
                         class="form-control"
                         aria-label="Email"
                         aria-describedby="inputGroup-sizing-default"
@@ -195,16 +213,23 @@
                     <div class="input-group mb-4">
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default"
-                          >Phone Number</span
+                          >Mobile Number</span
                         >
                       </div>
                       <input
                         name="phone_number"
-                        type="number"
+                        type="text"
+                        placeholder="09XX-XXX-XXXX"
                         class="form-control zipcode"
+                        oninvalid="this.setCustomValidity('Invalid mobile number(format: 9XX-XXX-XXXX(10 digits))')"
+                        oninput="this.setCustomValidity('')"
+                        pattern="[9]{1}[0-9]{9}"
+                        maxlength="10"
+                        onkeypress="return isNumberKey(event)"
                         aria-label="Phone number"
                         aria-describedby="inputGroup-sizing-default"
                         style="height: inherit"
+                        required
                       />
                     </div>
                   </div>
@@ -250,7 +275,7 @@
                       "
                       >STATUS</label
                     >
-                    <select name="status" id="status">
+                    <select name="status" id="status" required>
                       {% for status in status_choices %}
                       <option value="{{ status.0 }}">{{ status.1 }}</option>
                       {% endfor %}
@@ -266,7 +291,7 @@
                       "
                       >SEX</label
                     >
-                    <select name="gender" id="gender">
+                    <select name="gender" id="gender" required>
                       {% for sex in gender_choices %}
                       <option value="{{ sex.0 }}"> {{ sex.1 }}</option>
                       {% endfor %}
@@ -410,6 +435,7 @@
                       step="0.01"
                       min="0"
                       style="margin: 0; height: inherit"
+                      required
                     />
 
                     <label
@@ -429,6 +455,7 @@
                       min="0"
                       id="weight"
                       style="margin: 0; height: inherit"
+                      required
                     />
 
                     <div class="input-group mt-4">

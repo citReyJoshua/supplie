@@ -97,3 +97,6 @@ db.sqlite3
 # Images
 /frontend/static/images/product/
 /frontend/static/images/customer/
+
+bin/
+pyvenv.cfg
