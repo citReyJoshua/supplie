@@ -58,7 +58,7 @@
           <form action="" method="POST" style="width: 90%; margin: auto" enctype="multipart/form-data">
             {% csrf_token %}
             <label for="category" class="mylabel">Name</label>
-            <input name="name" class="mb-4" type="text" placeholder="Name" />
+            <input name="name" class="mb-4" type="text"  maxlength="20" placeholder="Name" />
             <label for="category" class="p-2">Category</label>
             <select name="category" id="category">
               {% for category in categories %}
@@ -72,7 +72,7 @@
               {% endfor %}
             </select>
             <label for="category" class="mylabel">Brand</label>
-            <input name="brand" class="mb-4" type="text" placeholder="Brand" />
+            <input name="brand" class="mb-4" type="text"  maxlength="20" placeholder="Brand" />
             <label for="price" class="p-2">Price</label>
             <input type="number" name="price" id="price" step="0.05" min="0"style="margin: 0 130px 0 0; height: inherit"/>
             <label for="no_of_stocks" class="p-2" Number of stocks>Number of Items</label>
