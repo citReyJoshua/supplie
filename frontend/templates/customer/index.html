@@ -39,7 +39,7 @@ Customer Dashboard
     <h1>Customer</h1>
     <div class='d-flex justify-content-end align-items-center'>
       <h6 class="mx-2">Date Range:</h6>
-      <input class="input-text my-4" type="text" name="daterange" value="01/01/2020 - 12/31/2020" />
+      <input class="input-text my-4" type="text"  maxlength="20" name="daterange" value="01/01/2020 - 12/31/2020" />
     </div>
   </div>
   <table id="example" class="table table-striped table-bordered" style="width: 100%">
@@ -91,11 +91,11 @@ Customer Dashboard
             <div class="input-group-prepend">
               <span class="input-group-text">Name</span>
             </div>
-            <input name="first_name" type="text" aria-label="First name" value="{{ customer.first_name }}"
+            <input name="first_name" type="text"  maxlength="20" aria-label="First name" value="{{ customer.first_name }}"
               class="form-control" style="height: inherit" required />
-            <input name="middle_name" type="text" aria-label="Middle name" value="{{ customer.middle_name }}"
+            <input name="middle_name" type="text"  maxlength="20" aria-label="Middle name" value="{{ customer.middle_name }}"
               class="form-control" style="height: inherit" />
-            <input name="last_name" type="text" aria-label="Last name" value="{{ customer.last_name }}"
+            <input name="last_name" type="text"  maxlength="20" aria-label="Last name" value="{{ customer.last_name }}"
               class="form-control" style="height: inherit" required />
           </div>
 
@@ -103,13 +103,13 @@ Customer Dashboard
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroup-sizing-default">Address</span>
             </div>
-            <input name="brgy" value="{{ customer.brgy }}" type="text" class="form-control" aria-label="barangay"
+            <input name="brgy" value="{{ customer.brgy }}" type="text"  maxlength="20" class="form-control" aria-label="barangay"
               aria-describedby="inputGroup-sizing-default" style="height: inherit" required/>
-            <input name="province" value="{{ customer.province }}" type="text" class="form-control"
+            <input name="province" value="{{ customer.province }}" type="text"  maxlength="20" class="form-control"
               aria-label="province" aria-describedby="inputGroup-sizing-default" style="height: inherit" required/>
-            <input name="city" value="{{ customer.city }}" type="text" class="form-control" aria-label="city"
+            <input name="city" value="{{ customer.city }}" type="text"  maxlength="20" class="form-control" aria-label="city"
               aria-describedby="inputGroup-sizing-default" style="height: inherit" required/>
-            <input name="country" value="{{ customer.country }}" type="text" class="form-control" aria-label="country"
+            <input name="country" value="{{ customer.country }}" type="text"  maxlength="20" class="form-control" aria-label="country"
               aria-describedby="inputGroup-sizing-default" style="height: inherit" required/>
             <input name="zip_code" value="{{ customer.zip_code }}" type="text" class="form-control zipcode" 
             onkeypress="return isNumberKey(event)" oninvalid="this.setCustomValidity('Invalid Zipcode(1-4 digits)')"
@@ -183,54 +183,54 @@ Customer Dashboard
             <div class="input-group-prepend mb-0">
               <span class="input-group-text" id="inputGroup-sizing-default">Birthplace</span>
             </div>
-            <input name="birthplace" value="{{ customer.birthplace }}" type="text" class="form-control"
+            <input name="birthplace" value="{{ customer.birthplace }}" type="text"  maxlength="20" class="form-control"
               aria-label="Birthplace" aria-describedby="inputGroup-sizing-default" style="height: inherit" />
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroup-sizing-default">Religion</span>
             </div>
-            <input name="religion" value="{{ customer.religion }}" type="text" class="form-control"
+            <input name="religion" value="{{ customer.religion }}" type="text"  maxlength="20" class="form-control"
               aria-describedby="inputGroup-sizing-default" style="height: inherit" />
           </div>
           <div class="input-group">
             <div class="input-group-prepend mb-0">
               <span class="input-group-text">Spouse's first and last name</span>
             </div>
-            <input name="spouse_first_name" value="{{ customer.spouse_first_name }}" type="text" aria-label="First name"
+            <input name="spouse_first_name" value="{{ customer.spouse_first_name }}" type="text"  maxlength="20" aria-label="First name"
               class="form-control" style="height: inherit" />
-            <input name="spouse_last_name" value="{{ customer.spouse_last_name }}" type="text" aria-label="Last name"
+            <input name="spouse_last_name" value="{{ customer.spouse_last_name }}" type="text"  maxlength="20" aria-label="Last name"
               class="form-control" style="height: inherit" />
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroup-sizing-default">Occupation</span>
             </div>
-            <input name="spouse_occupation" value="{{ customer.spouse_occupation }}" type="text" class="form-control"
+            <input name="spouse_occupation" value="{{ customer.spouse_occupation }}" type="text"  maxlength="20" class="form-control"
               aria-describedby="inputGroup-sizing-default" style="height: inherit" />
           </div>
           <div class="input-group">
             <div class="input-group-prepend mb-0">
               <span class="input-group-text">Mother's first and last name</span>
             </div>
-            <input name="mother_first_name" value="{{ customer.mother_first_name }}" type="text" aria-label="First name"
+            <input name="mother_first_name" value="{{ customer.mother_first_name }}" type="text"  maxlength="20" aria-label="First name"
               class="form-control" style="height: inherit" />
-            <input name="mother_last_name" value="{{ customer.mother_last_name }}" type="text" aria-label="Last name"
+            <input name="mother_last_name" value="{{ customer.mother_last_name }}" type="text"  maxlength="20" aria-label="Last name"
               class="form-control" style="height: inherit" />
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroup-sizing-default">Occupation</span>
             </div>
-            <input name="mother_occupation" value="{{ customer.mother_occupation }}" type="text" class="form-control"
+            <input name="mother_occupation" value="{{ customer.mother_occupation }}" type="text"  maxlength="20" class="form-control"
               aria-describedby="inputGroup-sizing-default" style="height: inherit" />
           </div>
           <div class="input-group">
             <div class="input-group-prepend mb-0">
               <span class="input-group-text">Father's first and last name</span>
             </div>
-            <input name="father_first_name" value="{{ customer.father_first_name }}" type="text" aria-label="First name"
+            <input name="father_first_name" value="{{ customer.father_first_name }}" type="text"  maxlength="20" aria-label="First name"
               class="form-control" style="height: inherit" />
-            <input name="father_last_name" value="{{ customer.father_last_name }}" type="text" aria-label="Last name"
+            <input name="father_last_name" value="{{ customer.father_last_name }}" type="text"  maxlength="20" aria-label="Last name"
               class="form-control" style="height: inherit" />
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroup-sizing-default">Occupation</span>
             </div>
-            <input name="father_occupation" value="{{ customer.father_occupation }}" type="text" class="form-control"
+            <input name="father_occupation" value="{{ customer.father_occupation }}" type="text"  maxlength="20" class="form-control"
               aria-describedby="inputGroup-sizing-default" style="height: inherit" />
           </div>
           <div class="input-group">
