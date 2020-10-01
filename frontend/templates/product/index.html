@@ -57,11 +57,14 @@ Product Dashboard
                 {% for product_image in images %}
                 {% if product_image.product_id == product.id %}
                 <div class="d-flex justify-content-center">
-                  <img src="{{ product_image.image.url }}" id="output" alt="product_image" width="75" height="75"
-                    style=" border: 1px solid; object-fit: cover; border-radius: 10%; width:100; height:100">
+                  <img src="{{ product_image.image.url }}" id="output" class="mx-2" alt="product_image" width="75" height="75"
+                    style=" border: 1px solid; object-fit: cover; border-radius: 10%; width:110px; height:110px">
                 </div>
                 <input type="file" class="" id="file" style="width: 20vw; display:none;"
                   name="image{{ forloop.counter }}" onchange="loadFile(event)" />
+                {% else %}
+                <div style="height:50px;">
+                </div>
                 {% endif %}
                 {% endfor %}
             </div>

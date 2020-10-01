@@ -25,6 +25,10 @@ Customer Dashboard
 
      return true;
   }
+  var loadFile = function(event) {
+    var image = document.getElementById('output');
+    image.src = URL.createObjectURL(event.target.files[0]);
+  };
 </script>
 <div class="container">
 
@@ -107,9 +111,9 @@ Customer Dashboard
               aria-describedby="inputGroup-sizing-default" style="height: inherit" required/>
             <input name="country" value="{{ customer.country }}" type="text" class="form-control" aria-label="country"
               aria-describedby="inputGroup-sizing-default" style="height: inherit" required/>
-            <input name="zip_code" value="{{ customer.zip_code }}" type="number" class="form-control zipcode" pattern="\d{4}"
-            onkeypress="return isNumberKey(event)" oninvalid="this.setCustomValidity('Invalid Zipcode(4 digits)')"
-            oninput="this.setCustomValidity('')"
+            <input name="zip_code" value="{{ customer.zip_code }}" type="text" class="form-control zipcode" 
+            onkeypress="return isNumberKey(event)" oninvalid="this.setCustomValidity('Invalid Zipcode(1-4 digits)')"
+            oninput="this.setCustomValidity('')" maxlength="4"
               aria-label="zipcode" min="0" aria-describedby="inputGroup-sizing-default" style="height: inherit" required/>
           </div>
           <div class="input-group">
@@ -119,16 +123,17 @@ Customer Dashboard
             <input name="email" type="email" value="{{ customer.email }}" class="form-control" aria-label="Email"
               aria-describedby="inputGroup-sizing-default" style="height: inherit" required />
             <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-default">Phone Number</span>
+              <span class="input-group-text" id="inputGroup-sizing-default">Mobile Number</span>
             </div>
             <input
                         name="phone_number"
                         type="text"
                         value="{{ customer.phone_number }}"
                         class="form-control zipcode"
-                        oninvalid="this.setCustomValidity('Invalid phone number(10 digits)')"
+                        oninvalid="this.setCustomValidity('Invalid mobile number(format: 9XX-XXX-XXXX (10 digits))')"
                         oninput="this.setCustomValidity('')"
-                        pattern="[1-9]{1}[0-9]{9}"
+                        pattern="[9]{1}[0-9]{9}"
+                        maxlength="10"
                         onkeypress="return isNumberKey(event)"
                         aria-label="Phone number"
                         aria-describedby="inputGroup-sizing-default"
@@ -312,13 +317,6 @@ Customer Dashboard
     </tfoot>
   </table>
 </div>
-
-<script>
-  var loadFile = function (event) {
-    var image = document.getElementById('output');
-    image.src = URL.createObjectURL(event.target.files[0]);
-  };
-</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
   integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
