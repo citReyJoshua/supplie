@@ -5,6 +5,27 @@ Customer Dashboard
 {% endblock %}
 
 {% block content %}
+<style>
+.zipcode::-webkit-outer-spin-button,
+.zipcode::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+  .zipcode[type=number] {
+  -moz-appearance: textfield;
+}
+</style>
+<script language=Javascript>
+  function isNumberKey(evt)
+  {
+     var charCode = (evt.which) ? evt.which : evt.keyCode;
+     if (charCode != 46 && charCode > 31 
+       && (charCode < 48 || charCode > 57))
+        return false;
+
+     return true;
+  }
+</script>
 <div class="container">
 
   <div class="d-flex align-items-center justify-content-between">
@@ -57,7 +78,7 @@ Customer Dashboard
                   height="75" style="object-fit: cover; border-radius: 50%; width:75; height:75">
                 {% endif %}
               </div>
-              <form action="" method="post">{%csrf_token%}
+              <form action="" method="post" enctype="multipart/form-data">{%csrf_token%}
                 <input type="file" class="" id="file" style="width: 20vw; display:none;" name="profile_pic"
                   onchange="loadFile(event)" />
                 <label for="file" class="btn-primary rounded-circle text-center"
@@ -79,15 +100,17 @@ Customer Dashboard
               <span class="input-group-text" id="inputGroup-sizing-default">Address</span>
             </div>
             <input name="brgy" value="{{ customer.brgy }}" type="text" class="form-control" aria-label="barangay"
-              aria-describedby="inputGroup-sizing-default" style="height: inherit" />
+              aria-describedby="inputGroup-sizing-default" style="height: inherit" required/>
             <input name="province" value="{{ customer.province }}" type="text" class="form-control"
-              aria-label="province" aria-describedby="inputGroup-sizing-default" style="height: inherit" />
+              aria-label="province" aria-describedby="inputGroup-sizing-default" style="height: inherit" required/>
             <input name="city" value="{{ customer.city }}" type="text" class="form-control" aria-label="city"
-              aria-describedby="inputGroup-sizing-default" style="height: inherit" />
+              aria-describedby="inputGroup-sizing-default" style="height: inherit" required/>
             <input name="country" value="{{ customer.country }}" type="text" class="form-control" aria-label="country"
-              aria-describedby="inputGroup-sizing-default" style="height: inherit" />
-            <input name="zip_code" value="{{ customer.zip_code }}" type="number" class="form-control no-dropdown"
-              aria-label="zipcode" min="0" aria-describedby="inputGroup-sizing-default" style="height: inherit" />
+              aria-describedby="inputGroup-sizing-default" style="height: inherit" required/>
+            <input name="zip_code" value="{{ customer.zip_code }}" type="number" class="form-control zipcode" pattern="\d{4}"
+            onkeypress="return isNumberKey(event)" oninvalid="this.setCustomValidity('Invalid Zipcode(4 digits)')"
+            oninput="this.setCustomValidity('')"
+              aria-label="zipcode" min="0" aria-describedby="inputGroup-sizing-default" style="height: inherit" required/>
           </div>
           <div class="input-group">
             <div class="input-group-prepend mb-0">
@@ -98,9 +121,20 @@ Customer Dashboard
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroup-sizing-default">Phone Number</span>
             </div>
-            <input name="phone_number" type="number" value="{{ customer.phone_number }}"
-              class="form-control no-dropdown" min="0" aria-label="Phone number"
-              aria-describedby="inputGroup-sizing-default" style="height: inherit" />
+            <input
+                        name="phone_number"
+                        type="text"
+                        placeholder="{{ customer.phone_number }}"
+                        class="form-control zipcode"
+                        oninvalid="this.setCustomValidity('Invalid phone number(10 digits)')"
+                        oninput="this.setCustomValidity('')"
+                        pattern="[1-9]{1}[0-9]{9}"
+                        onkeypress="return isNumberKey(event)"
+                        aria-label="Phone number"
+                        aria-describedby="inputGroup-sizing-default"
+                        style="height: inherit"
+                        required
+                      />
           </div>
           <div class="input-group">
             <div class="input-group-prepend mb-0">
@@ -114,7 +148,7 @@ Customer Dashboard
               margin: 0;
               border: 1px solid rgb(190, 190, 190);
             ">STATUS</label>
-            <select name="status" id="status">
+            <select name="status" id="status" required>
               {% for status in status_choices %}
               {% if status.0 == customer.status %}
               <option value="{{ status.0 }}" selected>{{ status.1 }}</option>
@@ -130,7 +164,7 @@ Customer Dashboard
               margin: 0;
               border: 1px solid rgb(190, 190, 190);
             ">SEX</label>
-            <select name="gender" id="gender">
+            <select name="gender" id="gender" required>
               {% for sex in gender_choices %}
               {% if sex.0 == customer.gender %}
               <option value="{{ sex.0 }}" selected> {{ sex.1 }}</option>

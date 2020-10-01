@@ -62,8 +62,6 @@ Product Dashboard
                 </div>
                 <input type="file" class="" id="file" style="width: 20vw; display:none;"
                   name="image{{ forloop.counter }}" onchange="loadFile(event)" />
-                <label for="file" class="btn-primary rounded-circle text-center"
-                  style="margin: .5rem; cursor: pointer; width:20px; height: 20px">+</label>
                 {% endif %}
                 {% endfor %}
             </div>
@@ -85,15 +83,15 @@ Product Dashboard
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroup-sizing-default">Price</span>
             </div>
-            <input name="price" value="{{ product.price|floatformat:2 }}" type="number" class="form-control"
-              aria-describedby="inputGroup-sizing-default" style="height: inherit" />
+            <input name="price" value="{{ product.price|floatformat:2 }}" type="number" step="0.05" min="0" class="form-control"
+              aria-describedby="inputGroup-sizing-default" style="height: inherit" required/>
             <label for="category" style="
               background: #e9ecef;
               padding: 6px 12px;
               margin: 0;
               border: 1px solid rgb(190, 190, 190);
             ">Category</label>
-            <select name="category" id="category">
+            <select name="category" id="category" required>
               {% for category in categories %}
               {% if category.0 == product.category %}
               <option value="{{ category.0 }}" selected> {{ category.1 }}</option>
@@ -107,15 +105,15 @@ Product Dashboard
             <div class="input-group-prepend mb-0">
               <span class="input-group-text" id="inputGroup-sizing-default">Stocks</span>
             </div>
-            <input name="no_of_stocks" value="{{ product.no_of_stocks }}" type="number" class="form-control"
-              aria-label="Stocks" aria-describedby="inputGroup-sizing-default" style="height: inherit" />
+            <input name="no_of_stocks" value="{{ product.no_of_stocks }}" type="number" min="0" max="999" class="form-control"
+              aria-label="Stocks" aria-describedby="inputGroup-sizing-default" style="height: inherit"  required/>
             <label for="color" style="
               background: #e9ecef;
               padding: 6px 12px;
               margin: 0;
               border: 1px solid rgb(190, 190, 190);
             ">Color Variant</label>
-            <select name="color" id="color">
+            <select name="color" id="color" required>
               {% for color in colors %}
               {% if color.0 == product.color %}
               <option value="{{ color.0 }}" selected>{{ color.1 }}</option>

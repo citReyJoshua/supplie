@@ -7,19 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Customer Registration</title>
 
-    <style>
-      .zipcode::-webkit-outer-spin-button,
-      .zipcode::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
-
-      /* Firefox */
-      .zipcode[type="number"] {
-        -moz-appearance: textfield;
-      }
-    </style>
-
     <link
       href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css"
       rel="stylesheet"
@@ -61,6 +48,27 @@
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   </head>
   <body>
+    <style>
+      .zipcode::-webkit-outer-spin-button,
+      .zipcode::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+        .zipcode[type=number] {
+        -moz-appearance: textfield;
+      }
+      </style>
+      <script language=Javascript>
+        function isNumberKey(evt)
+        {
+           var charCode = (evt.which) ? evt.which : evt.keyCode;
+           if (charCode != 46 && charCode > 31 
+             && (charCode < 48 || charCode > 57))
+              return false;
+ 
+           return true;
+        }
+      </script>
     <nav class="navbar navbar-dark primary-color">
       <h3 style="margin: auto; color: white">CUSTOMER REGISTRATION</h3>
     </nav>
@@ -171,8 +179,12 @@
                       <input
                         name="zip_code"
                         placeholder="Zip Code"
-                        type="number"
+                        type="text"
                         class="form-control zipcode"
+                        oninvalid="this.setCustomValidity('Invalid Zipcode(4 digits)')"
+                        oninput="this.setCustomValidity('')"
+                        pattern="\d{4}"
+                        onkeypress="return isNumberKey(event)"
                         aria-label="zipcode"
                         aria-describedby="inputGroup-sizing-default"
                         style="height: inherit"
@@ -200,8 +212,13 @@
                       </div>
                       <input
                         name="phone_number"
-                        type="number"
+                        type="text"
+                        placeholder="9XXXXXXXXX"
                         class="form-control zipcode"
+                        oninvalid="this.setCustomValidity('Invalid phone number(10 digits)')"
+                        oninput="this.setCustomValidity('')"
+                        pattern="[1-9]{1}[0-9]{9}"
+                        onkeypress="return isNumberKey(event)"
                         aria-label="Phone number"
                         aria-describedby="inputGroup-sizing-default"
                         style="height: inherit"

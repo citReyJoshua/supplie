@@ -18,82 +18,18 @@ class CustomerView(View):
         return render(request, 'customer/index.html', context)
 
     def post(self, request):
-        if request.method == 'POST':
-            if 'btndelete' in request.POST:
-                id = request.POST.get("btndelete")
-                Customer.objects.get(id=id).delete()
+        if 'btndelete' in request.POST:
+            id = int(request.POST.get("btndelete"))
+            Customer.objects.get(id=id).delete()  # pylint: disable=no-member
+        elif 'btnupdate' in request.POST:
+            id = int(request.POST.get('btnupdate'))
+            customer_instance = Customer.objects.get(id=id)  # pylint: disable=no-member
+            form = CustomerRegistrationForm(request.POST, request.FILES,
+                                            instance=customer_instance)
+            if form.is_valid():
+                form.save()
 
-            elif 'btnupdate' in request.POST:
-                first_name = request.POST.get('first_name')
-                middle_name = request.POST.get('middle_name')
-                last_name = request.POST.get('last_name')
-                email = request.POST.get('email')
-                phone_number = request.POST.get('phone_number')
-                profile_pic = request.POST.get('profile_pic')
-                birthdate = request.POST.get('birthdate')
-                birthplace = request.POST.get('birthplace')
-                status = request.POST.get('status')
-                gender = request.POST.get('gender')
-                no_of_children = request.POST.get('no_of_children')
-
-                # address fields
-                brgy = request.POST.get('brgy')
-                province = request.POST.get('province')
-                city = request.POST.get('city')
-                country = request.POST.get('country')
-                zip_code = request.POST.get('zip_code')
-
-                # spouse fields
-                spouse_first_name = request.POST.get('spouse_first_name')
-                spouse_last_name = request.POST.get('spouse_last_name')
-                spouse_occupation = request.POST.get('spouse_occupation')
-
-                # parent's fields
-                father_first_name = request.POST.get('father_first_name')
-                father_last_name = request.POST.get('father_last_name')
-                father_occupation = request.POST.get('father_occupation')
-                mother_first_name = request.POST.get('mother_first_name')
-                mother_last_name = request.POST.get('mother_last_name')
-                mother_occupation = request.POST.get('mother_occupation')
-
-                height = request.POST.get('height')
-                weight = request.POST.get('weight')
-                religion = request.POST.get('weight')
-
-                id = request.POST.get('btnupdate')
-                Customer.objects.filter(id=id).update(
-                    first_name=first_name,
-                    middle_name=middle_name,
-                    last_name=last_name,
-                    email=email,
-                    phone_number=phone_number,
-                    profile_pic=profile_pic,
-                    birthdate=birthdate,
-                    birthplace=birthplace,
-                    status=status,
-                    gender=gender,
-                    no_of_children=no_of_children,
-                    brgy=brgy,
-                    province=province,
-                    city=city,
-                    country=country,
-                    zip_code=zip_code,
-                    spouse_first_name=spouse_first_name,
-                    spouse_last_name=spouse_last_name,
-                    spouse_occupation=spouse_occupation,
-                    father_first_name=father_first_name,
-                    father_last_name=father_last_name,
-                    father_occupation=father_occupation,
-                    mother_first_name=mother_first_name,
-                    mother_last_name=mother_last_name,
-                    mother_occupation=mother_occupation,
-                    height=height,
-                    weight=weight,
-                    religion=religion,
-                )
-
-        # bug : open gihapon ang modal ig redirect
-        return redirect('/customer/')
+        return redirect('/customer/#')
 
 
 class CustomerRegistrationView(View):
