@@ -66,3 +66,7 @@ class Transaction(models.Model):
     date = models.DateField(auto_now_add=True)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=False, blank=False)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, null=False, blank=False)
+
+    class Meta:
+        db_table = 'Transaction'
+        ordering = ['date']
