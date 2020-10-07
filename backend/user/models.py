@@ -1,4 +1,5 @@
 from django.db import models
+from backend.product.models import Product
 from backend import globals
 from . import choices
 
@@ -58,3 +59,10 @@ class Customer(Person):
 
     class Meta:
         db_table = 'Customer'
+
+
+class Transaction(models.Model):
+
+    date = models.DateField(auto_now_add=True)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=False, blank=False)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=False, blank=False)
