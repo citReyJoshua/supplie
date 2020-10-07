@@ -181,6 +181,17 @@ table {
   transition: ease-in-out 100ms;
 }
 
+.modal-close--yellow {
+  background-color: yellow;
+  color: yellow;
+}
+
+.modal-close--yellow:hover {
+  color: black;
+  -webkit-transition: ease-in-out 100ms;
+  transition: ease-in-out 100ms;
+}
+
 .modal-head {
   margin-bottom: 5px;
   color: #4285f4;

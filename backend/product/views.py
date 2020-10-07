@@ -77,3 +77,14 @@ class ProductRegistrationView(View):
             return redirect('/product/')
 
         return HttpResponse(form.errors)
+
+
+class ProductListView(View):
+    def get(self, request):
+        products = Product.objects.all()  # pylint: disable=no-member
+        product_images = ProductImage.objects.all()  # pylint: disable=no-member
+        context = {
+            'products': products,
+            'product_images': product_images
+        }
+        return render(request, 'buy/index.html', context)

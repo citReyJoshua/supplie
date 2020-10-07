@@ -1,0 +1,72 @@
+{%extends 'sections/base.html' %}
+{% load static %}
+{% block title %}
+Product List 
+{% endblock %}
+
+{% block content %}
+    <h1></h1>
+<div class="container-fluid d-flex justify-content-center p-3 flex-wrap">
+    {% for product in products %}
+        <div class="card m-4 shadow rounded p-2" style="width: 320px;">
+            <div id="myCarousel{{ product.id }}" class="carousel slide" data-ride="carousel" data-interval="false">
+              
+                <div class="carousel-inner">
+                    {% for product_image in product_images %}
+                        {% if product_image.product_id == product.id %}
+                            <div class="carousel-item active">
+                                <img src="{{ product_image.image.url }}" alt="product_image id={{ product.id }}" width="300px" height="300px">
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+              
+                <a class="carousel-control-prev" href="#myCarousel{{ product.id }}" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#myCarousel{{ product.id }}" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+              </div>
+            <h5 class="card-title">
+                {{ product.name }}
+            </h5>
+            <span>
+                Brand: {{ product.brand }}
+            </span>
+            <span>
+                Color: {{ product.get_color_display }}
+            </span>
+            <span>
+                Price: {{ product.price }} php
+            </span>
+            <span>
+                Stock: {{ product.no_of_stocks }}
+            </span>
+            <a href="#buy-modal{{ product.id }}" class="align-self-center">
+                <button class="btn btn-outline-info my-2 shadow"> Buy </button>
+            </a>
+        </div>
+
+        {% comment %} Buy Modal {% endcomment %}
+        <div id="buy-modal{{ product.id }}" class="modal-window">
+            <div class="p-0 pb-3 modal-window--small">
+              <a href="#" title="Close" class="modal-close modal-close--yellow">&#x2716</a>
+              <form action="" method="post">
+                {%csrf_token%}
+              <div class="modal-header mb-3 d-flex justify-content-center align-content-center"
+                style="background-color: rgb(41, 114, 224) !important;height:30px;"></div>
+                <h4 class="mx-4 text-center">{{ product.name }}</h4>
+                <label for="no_of_stocks" class="ml-5 mr-2 font-weight-bold">Amount:</label>
+              <input name="no_of_stocks" type="number" class="my-3 text-center" min="1" max="{{ product.no_of_stocks }}" style="width: 5rem;"/>
+              <footer class='d-flex justify-content-center'>
+                  <button type="submit" name="btndelete" value="{{product.id}}" class='button btn btn-info'>Buy
+                  </button></form>
+              </footer>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

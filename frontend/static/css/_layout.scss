@@ -113,6 +113,14 @@ table {
     color: rgb(58, 56, 56);
     transition: ease-in-out 100ms;
   }
+  &--yellow {
+    background-color: yellow;
+    color: yellow;
+    &:hover {
+      color: black;
+      transition: ease-in-out 100ms;
+    }
+  }
 }
 
 .modal-head {
