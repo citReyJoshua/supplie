@@ -1,0 +1,137 @@
+{%extends 'sections/base.html' %}
+{% load static %}
+{% block title %}
+Product Order
+{% endblock %}
+
+{% block content %}
+<label for="customer_selectin">Customer:</label>
+<select name="customer_selection" id="customer_selection" onchange="setCustomerValue()" class="my-3 mr-3 py-1 px-2">
+    {% for customer in customers %}
+        {% if forloop.counter == 1 %}
+        <option value="{{ customer.id }}" selected>{{ customer.last_name }}, {{ customer.first_name }}</option>
+        {% else %}
+        <option value="{{ customer.id }}">{{ customer.last_name }}, {{ customer.first_name }}</option>
+        {% endif %}
+    {% endfor %}
+</select>
+<div class="container-fluid d-flex justify-content-center p-3 flex-wrap">
+    {% for product in products %}
+        <div class="card m-4 shadow rounded p-2" style="width: 320px;">
+            <div id="myCarousel{{ product.id }}" class="carousel slide" data-ride="carousel" data-interval="false">
+                
+                <div class="carousel-inner">
+                    {% for product_image in product_images %}
+                        {% if product_image.product_id == product.id %}
+                            <div class="carousel-item">
+                                <img src="{{ product_image.image.url }}" alt="product_image id={{ product.id }}" width="300px" height="300px">
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+              
+                <a class="carousel-control-prev" href="#myCarousel{{ product.id }}" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#myCarousel{{ product.id }}" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+              </div>
+            <h5 class="card-title">
+                {{ product.name }}
+            </h5>
+            <span>
+                Brand: {{ product.brand }}
+            </span>
+            <span>
+                Color: {{ product.get_color_display }}
+            </span>
+            <span>
+                Price: {{ product.price }} php
+            </span>
+            <span>
+                Stock: {{ product.no_of_stocks }}
+            </span>
+            <a href="#buy-modal{{ product.id }}" class="align-self-center">
+                {% if product.no_of_stocks == 0 %}
+                    <button class="btn btn-danger my-2 shadow" disabled> Out of Stock </button>
+                {% else %}
+                    <button class="btn btn-info my-2 shadow"> Buy </button>
+                {% endif %}
+            </a>
+        </div>
+
+        {% comment %} Buy Modal {% endcomment %}
+        <div id="buy-modal{{ product.id }}" class="modal-window">
+            <div class="p-0 pb-3 modal-window--small">
+              <a href="#" title="Close" class="modal-close modal-close--yellow">&#x2716</a>
+                <form action="" method="post">
+                    {%csrf_token%}
+                    <div class="modal-header mb-3 d-flex justify-content-center align-content-center"
+                    style="background-color: rgb(41, 114, 224) !important;height:30px;">
+                    </div>
+                    <h4 class="text-center">{{ product.name }} - Php {{ product.price }} each</h4>
+                    <input class="mx-4 btn btn-cyan " name="product" value="{{ product.id }}" style="display:none;"/>
+
+                    <div class="d-flex flex-column">
+                        <div class="d-flex justify-content-between align-content-center mt-3">
+                            <label for="cash_received" class="mb-0">Cash Tendered(Php):</label>
+                            <input id="cash-tendered{{ product.id }}" name="cash_received" type="number" min="1" style="width: 5rem;" value="0" step="0.01" oninput="getCash('{{ product.id }}')" required>
+                            <input id="cash-received{{ product.id }}" class="flex-grow-1 text-right px-2" placeholder="Cash Received" step="0.01" style="width: 7.5rem; border: none;" readonly>
+                        </div>
+                        <div class="d-flex justify-content-between align-content-center">
+                            <label for="quantity" class="mb-0">Quantity(Amount):</label>
+                            <input id="product-price{{ product.id }}" name="quantity" type="number" min="1" max="{{ product.no_of_stocks }}" style="width: 5rem;" value="0" step="0.01" oninput='setTotalPrice("{{ product.price }}", "{{ product.id }}")' required>
+                            <input id="total-price{{ product.id }}" class="flex-grow-1 text-right px-2" placeholder="Total Price"  step="0.01" style="width: 7.5rem; border: none;" readonly>
+                        </div>
+                        <div class="d-flex justify-content-end align-content-center">
+                            <input id="change{{ product.id }}" class="flex-grow-1 text-right px-2 pt-3" placeholder="Change"  min="0" step="0.01" style="width: 2.5rem; border: none; border-top: 1px solid black;cursor:auto;" >
+                        </div>
+                    </div>
+                    
+                    
+                    <footer class='d-flex justify-content-center mt-5'>
+                        <button id="customer" type="submit" name="customer" class='button btn btn-info' onsubmit=" (this) => { alert('Transaction Successful')}">Buy</button>
+                    </footer>
+                </form>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<script>
+    let carousels = document.getElementsByClassName('carousel-inner');
+    for (let i = 0; i < carousels.length; i++){
+        let c = carousels[i].children;
+        c.item(0).classList.add('active');
+    }
+    let setCustomerValue = () => {
+        let customerValue = document.getElementById('customer_selection').value;
+        let customerSubmits = document.getElementsByName('customer');
+        customerSubmits.forEach((c) =>{
+            c.value = customerValue;
+        })
+    }
+    setCustomerValue()
+
+    let getCash = (id) => {
+        let cash = document.getElementById('cash-tendered'+id).value;
+        document.getElementById('cash-received'+id).value = parseFloat(cash).toFixed(2);
+        calculateChange(id);
+    }
+
+    let setTotalPrice = (quantity,id) =>{
+        let productPrice = document.getElementById('product-price'+id).value;
+        document.getElementById('total-price'+id).value = (productPrice * parseFloat(quantity)).toFixed(2);
+        calculateChange(id);
+    }
+
+    let calculateChange = (id) =>{
+        let cashReceived = document.getElementById('cash-tendered'+id).value;
+        let totalPrice = document.getElementById('total-price'+id).value;
+        if (cashReceived && totalPrice)
+            document.getElementById('change'+id).value = (cashReceived - totalPrice).toFixed(2);
+    }
+</script>
+{% endblock %}

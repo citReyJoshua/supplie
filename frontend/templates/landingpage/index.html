@@ -15,19 +15,17 @@
 <body>
     <div class="cover">
         <div class="container">
-            <div class="heading"><span class='firstword'>INFORMATION</span> <b>MANAGEMENT</b></div>
+            <div class="heading"><span class='firstword'>SUPPLIE</span></div>
 
             <div class="subheading">
-                <span class="subheadingspan">WE STUDY DATABASE AND WE CREATE ONE</span>
+                <span class="subheadingspan">Your Online Department Store</span>
             </div>
 
-            <div style="margin-bottom: 40px;">
-                <button class="signin">SIGN IN</button>
-                <button class="signup">SIGN UP</button>
-            </div>
+            <a href="{% url 'product:index' %}">Products</a>
+            <a href="{% url 'user:order' %}">Buy</a>
 
             <a id='aboutus'>About us</a>
-            <a id='contactus'>Contact us</a>
+            <a id='contactus'>Contact us</a>     
             
         </div>
     </div>
@@ -38,7 +36,14 @@
                 About Us
             </h1>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae ex reiciendis delectus vero debitis optio sequi nostrum tempora sed. Id voluptates, voluptatem fuga vel neque perferendis nihil fugiat consectetur expedita porro molestiae tenetur incidunt iure quaerat non quos dolorem sapiente. At molestiae ratione commodi voluptatem, ullam ipsam repellendus perferendis, distinctio, dignissimos officiis temporibus ipsum ut quia asperiores excepturi cumque magni tempora nobis aut dolores minus vero accusamus. Necessitatibus omnis veniam excepturi dignissimos, ut sint iusto consequatur exercitationem sapiente ipsum, laudantium et. Numquam a illo eos, excepturi repudiandae esse iste obcaecati saepe unde expedita hic eligendi sequi deserunt voluptas aliquid ratione.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Beatae ex reiciendis delectus vero debitis optio sequi nostrum tempora sed. Id voluptates, 
+                voluptatem fuga vel neque perferendis nihil fugiat consectetur expedita porro molestiae tenetur 
+                incidunt iure quaerat non quos dolorem sapiente. At molestiae ratione commodi voluptatem, ullam ipsam repellendus 
+                perferendis, distinctio, dignissimos officiis temporibus ipsum ut quia asperiores excepturi cumque magni tempora nobis aut 
+                dolores minus vero accusamus. Necessitatibus omnis veniam excepturi dignissimos, ut sint iusto consequatur exercitationem sapiente ipsum, 
+                laudantium et. Numquam a illo eos, excepturi repudiandae esse iste obcaecati saepe unde expedita hic eligendi sequi deserunt voluptas aliquid 
+                ratione.
             </p>
             <button type="button" id='close-about-us'>
                 OK

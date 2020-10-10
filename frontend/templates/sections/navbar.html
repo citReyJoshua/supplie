@@ -1,8 +1,8 @@
 <div class="nav navbar position-sticky">
   <div class="font-bigger">Supplie</div>
   <ul class="d-flex justify-content-around align-items-center">
-    <li class="m-2 font-bigger font-white"><a href="#">Products</a></li>
-    <li class="m-2 font-bigger font-white"><a href="#">Login</a></li>
-    <li class="m-2 font-bigger font-white"><a href="#">Sign up</a></li>
+    <li class="m-2 font-bigger font-white"><a href="{% url 'product:index' %}">Products</a></li>
+    <li class="m-2 font-bigger font-white"><a href="{% url 'user:index' %}">Customer</a></li>
+    <li class="m-2 font-bigger font-white"><a href="{% url 'user:order' %}">Buy</a></li>
   </ul>
 </div>
