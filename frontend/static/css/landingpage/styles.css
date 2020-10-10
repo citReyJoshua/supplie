@@ -8,8 +8,9 @@
 .cover {
   margin: 0;
   padding: 0;
-  background-image: url("coverphoto.jpg");
+  background-image: url("coverphoto.svg");
   /* The image used */
+  background-size: auto;
   background-color: #cccccc;
   /* Used if the image is unavailable */
   height: 100vh;
@@ -36,7 +37,7 @@
   text-align: center;
   width: 70%;
   height: 40%;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
 }
 
 .heading {
@@ -96,7 +97,7 @@ a {
 }
 
 .modal {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   position: absolute;
   top: 0;
   left: 0;

@@ -6,6 +6,7 @@ from . import choices
 
 class Person(models.Model):
 
+    # main fields
     first_name = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT)
     middle_name = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT, null=True, blank=True)
     last_name = models.CharField(max_length=globals.MAX_LENGTH_DEFAULT)
@@ -63,10 +64,21 @@ class Customer(Person):
 
 class Transaction(models.Model):
 
+    # date field
     date = models.DateField(auto_now_add=True)
+
+    # cash fields
+    cash_received = models.DecimalField(max_digits=10, decimal_places=2)
+    cash_change = models.DecimalField(max_digits=10, decimal_places=2)
+
+    # foreign fields
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=False, blank=False)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, null=False, blank=False)
 
+    quantity = models.PositiveIntegerField()
+
     class Meta:
         db_table = 'Transaction'
-        ordering = ['date']
+
+    def __str__(self):
+        return f'{self.quantity} piece/s of {self.product.name} bought by {self.customer.first_name} {self.customer.last_name}'  # pylint: disable=no-member
