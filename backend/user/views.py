@@ -24,8 +24,8 @@ class CustomerView(View):
             Customer.objects.get(id=id).delete()  # pylint: disable=no-member
         elif 'btnupdate' in request.POST:
             id = int(request.POST.get('btnupdate'))
-            customer_instance = Customer.objects.get(
-                id=id)  # pylint: disable=no-member
+            customer_instance = Customer.objects.get(   # pylint: disable=no-member
+                id=id)
             form = CustomerRegistrationForm(request.POST, request.FILES,
                                             instance=customer_instance)
             if form.is_valid():
@@ -79,7 +79,11 @@ class ProductOrderView(View):
             customer = form.cleaned_data['customer']
             product = form.cleaned_data['product']
 
-            # product = Product.objects.get(id=int(product_id))  # pylint: disable=no-member
+            # updating product no_of_stocks
+            product_instance = Product.objects.filter(id=product.id)  # pylint: disable=no-member
+            new_stock_value = product_instance[0].no_of_stocks - quantity
+            product_instance.update(no_of_stocks=new_stock_value)
+
             # customer = Customer.objects.get(id=customer_id)  # pylint: disable=no-member
 
             total_price = product.price * quantity
